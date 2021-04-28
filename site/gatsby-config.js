@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Alex != Geek();`,
-    description: `I am a Sitecore Architect. Always hungry to keep learning.`,
+    description: `I am a Sitecore Architect. Father of Luuk, fiancee of Marloes, hoarder of electronics. Loves to learn something new every single day.`,
     author: `Alex van Wolferen`,
     siteUrl: `https://blog.alexvanwolferen.nl`,
     social: {
@@ -70,13 +70,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `flexible-gatsby-starter`,
-        short_name: `flexible-gatsby`,
+        name: `Alex != Geek();`,
+        short_name: `Alex != Geek();`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `./static/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `./static/alex-icon.png`, // This path is relative to the root of the site.
       },
     },
     // `gatsby-plugin-offline`,
