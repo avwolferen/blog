@@ -11,6 +11,7 @@ tags:
   - "azure"
   - "certifications"
   - "microsoft"
+img: "images/azure-solutions-architect-expert-600x600.png"
 coverImage: "badges.png"
 ---
 

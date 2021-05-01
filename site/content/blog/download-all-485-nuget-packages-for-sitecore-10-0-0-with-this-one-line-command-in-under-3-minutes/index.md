@@ -11,6 +11,7 @@ tags:
   - "sitecore-metapackage"
   - "timesaver"
   - "visual-studio"
+img: "Download-all-485-NuGet-packages-for-Sitecore-10.0.0-with-this-one-line-command-in-under-3-minutes.png"
 coverImage: "Download-all-485-NuGet-packages-for-Sitecore-10.0.0-with-this-one-line-command-in-under-3-minutes.png"
 ---
 
