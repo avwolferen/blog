@@ -34,6 +34,7 @@ class BlogIndex extends React.Component {
                       style={{
                         backgroundImage: `url(${node.frontmatter.img.childImageSharp.gatsbyImageData.images.fallback.src})`,
                       }}
+                      title={node.frontmatter.title}
                     />
                   )}
                 <div className="post-content">
