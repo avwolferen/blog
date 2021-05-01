@@ -3,7 +3,7 @@ module.exports = {
     title: `Alex != Geek();`,
     description: `I am a Sitecore Architect. Father of Luuk, fiancé of Marloes, hoarder of electronics. Loves to learn something new every single day.`,
     author: `Alex van Wolferen`,
-    siteUrl: `https://blog.alexvanwolferen.nl`,
+    siteUrl: `https://www.alexvanwolferen.nl`,
     social: {
       twitter: `avwolferen`,
       facebook: ``,
