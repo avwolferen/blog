@@ -56,23 +56,29 @@ class BlogIndex extends React.Component {
             <nav className="pagination" role="navigation">
               <ul>
                 {!isFirst && (
+                  <li>
                   <p>
                     <Link to={prevPage} rel="prev" className="newer-posts">
                       ← Previous Page
                     </Link>
                   </p>
+                  </li>
                 )}
+                <li>
                 <p>
                   <span className="page-number">
                     Page {currentPage} of {numPages}
                   </span>
                 </p>
+                </li>
                 {!isLast && (
+                  <li>
                   <p>
                     <Link to={nextPage} rel="next" className="older-posts">
                       Next Page →
                     </Link>
                   </p>
+                  </li>
                 )}
               </ul>
             </nav>

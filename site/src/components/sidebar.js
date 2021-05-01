@@ -26,7 +26,8 @@ const Sidebar = ({ siteMetadata }) => (
                 <a
                   href={`https://twitter.com/${siteMetadata.social.twitter}`}
                   target="_blank"
-                  title="Twitter"
+                  rel="noreferrer"
+                  aria-label="Twitter"
                 >
                   <i className="fa fa-twitter" aria-hidden="true" />
                 </a>
@@ -37,7 +38,8 @@ const Sidebar = ({ siteMetadata }) => (
                 <a
                   href={`https://facebook.com/${siteMetadata.social.facebook}`}
                   target="_blank"
-                  title="Facebook"
+                  rel="noreferrer"
+                  aria-label="Facebook"
                 >
                   <i className="fa fa-facebook" aria-hidden="true" />
                 </a>
@@ -48,7 +50,8 @@ const Sidebar = ({ siteMetadata }) => (
                 <a
                   href={`https://github.com/${siteMetadata.social.github}`}
                   target="_blank"
-                  title="Github"
+                  rel="noreferrer"
+                  aria-label="Github"
                 >
                   <i className="fa fa-github" aria-hidden="true" />
                 </a>
@@ -59,7 +62,8 @@ const Sidebar = ({ siteMetadata }) => (
                 <a
                   href={`https://linkedin.com/in/${siteMetadata.social.linkedin}`}
                   target="_blank"
-                  title="LinkedIn"
+                  rel="noreferrer"
+                  aria-label="LinkedIn"
                 >
                   <i className="fa fa-linkedin" aria-hidden="true" />
                 </a>
@@ -70,7 +74,8 @@ const Sidebar = ({ siteMetadata }) => (
                 <a 
                   href={`mailto:${siteMetadata.social.email}`} 
                   target="_blank"
-                  title="Email">
+                  rel="noreferrer"
+                  aria-label="Email">
                   <i className="fa fa-envelope-o" aria-hidden="true" />
                 </a>
               </li>
