@@ -30,8 +30,11 @@ const DefaultLayout = ({ children }) => (
       <div className="wrapper">
         <Helmet>
           <link
+            rel="preload"
             href="https://fonts.googleapis.com/css?family=Lato|PT+Serif&display=swap"
-            rel="stylesheet"
+            type="text/css"
+            as="style"
+            onload="this.onload=null;this.rel='stylesheet';"
           />
         </Helmet>
         <Sidebar siteMetadata={data.site.siteMetadata} />
