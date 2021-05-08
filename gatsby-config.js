@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Alex != Geek();`,
+    title: `Just another blog about Sitecore, tips and tricks`,
     description: `I am a Sitecore Architect. Father of Luuk, fiancé of Marloes, hoarder of electronics. Loves to learn something new every single day.`,
     author: `Alex van Wolferen`,
     siteUrl: `https://www.alexvanwolferen.nl`,
@@ -35,8 +35,8 @@ module.exports = {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 970,
-	      withWebp: true,
-	      withAvif: true,
+              withWebp: true,
+              withAvif: true,
             },
           },
           {
@@ -59,14 +59,65 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    // uncomment this and input the trackingId to enable google analytics
     {
-    resolve: `gatsby-plugin-google-analytics`,
-    options: {
-    trackingId: `UA-77698879-3`,
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: `UA-77698879-3`,
+      },
     },
+    {
+      resolve: `gatsby-plugin-feed`,
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMarkdownRemark } }) => {
+              return allMarkdownRemark.edges.map(edge => {
+                return Object.assign({}, edge.node.frontmatter, {
+                  description: edge.node.excerpt,
+                  date: edge.node.frontmatter.date,
+                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                  custom_elements: [{ "content:encoded": edge.node.html }],
+                })
+              })
+            },
+            query: `
+              {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
+                  edges {
+                    node {
+                      excerpt
+                      html
+                      fields { slug }
+                      frontmatter {
+                        title
+                        date
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: "/rss.xml",
+            title: "Sitecore blogs by Alex",
+          },
+        ],
+      }
     },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
