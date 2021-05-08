@@ -7,7 +7,8 @@ tags:
   - "luis"
   - "microsoft-bot-framework"
   - "sitecore"
-coverImage: "user-manager.jpg"
+coverImage: "./user-manager.jpg"
+img: "./user-manager.jpg"
 ---
 
 Managing Sitecore users normally requires you to log into Sitecore, navigate to the User Manager and lookup the specific user. This could also be done with the bot.

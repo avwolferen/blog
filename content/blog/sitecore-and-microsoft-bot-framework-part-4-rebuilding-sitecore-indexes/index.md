@@ -8,6 +8,9 @@ tags:
   - "luis"
   - "microsoft-bot-framework"
   - "sitecore"
+
+coverImage: "./sitecore-loves-microsoft-bot-framework.jpg"
+img: "./sitecore-loves-microsoft-bot-framework.jpg"
 ---
 
 Rebuilding indexes, who doesn’t do this on almost a daily base? Logging into Sitecore, navigate to the control panel, opening the indexing manager and check that index you would like to rebuild. From that moment it is just waiting for it to finish.

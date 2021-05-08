@@ -10,7 +10,8 @@ tags:
   - "tools"
   - "visual-studio-code"
   - "vscode"
-coverImage: "VSCode-and-logviewer.jpg"
+coverImage: "./images/VSCode-and-logviewer.jpg"
+img: "./images/VSCode-and-logviewer.jpg"
 ---
 
 Developers often need to work their way through Sitecore logs while developing Sitecore stuff. Since there are a lot of those locations and log categories you need to spend as little time as possible to keep a look at those files. There are multiple solutions possible to work with log files but my personal preference is using Visual Studio Code and the Log Viewer extension by Bernardo.

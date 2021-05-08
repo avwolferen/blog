@@ -8,6 +8,9 @@ tags:
   - "luis"
   - "microsoft-bot-framework"
   - "sitecore"
+
+coverImage: "./sitecore-loves-microsoft-bot-framework.jpg"
+img: "./sitecore-loves-microsoft-bot-framework.jpg"
 ---
 
 Expecting things to be secure isn't an option. Communication in a secure manner between the Microsoft Bot Framework and Sitecore.

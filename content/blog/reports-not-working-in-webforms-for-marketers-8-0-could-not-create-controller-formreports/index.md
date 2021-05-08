@@ -8,7 +8,8 @@ tags:
   - "mvc"
   - "sitecore"
   - "wffm"
-coverImage: "FormReports.jpg"
+coverImage: "./images/FormReports.jpg"
+img: "./images/FormReports.jpg"
 ---
 
 Last Friday I installed Webforms For Marketers 8.0 in my Sitecore 8 instance where I’m working on a client’s Sitecore platform. After installation I added the sample ‘contact’ form to a page and published it all, I had to add the form by hand because we’ve all seen the ‘known issues’ list Sitecore 8 comes with.

@@ -10,6 +10,7 @@ tags:
   - "sitecore"
   - "sugcon"
 coverImage: "sitecore-loves-microsoft-bot-framework.jpg"
+img: "sitecore-loves-microsoft-bot-framework.jpg"
 ---
 
 In all my SUGNL presentations I have a goal that I would like to inspire people or at least provide them with some great ideas or takeaways of value. On the 19th of Januari during my SUGNL presentation in the a-la-carte style at DigitasLBi I mentioned in one of the slides that I was creating a Bot that was able to operate Sitecore. The Bot should be able to at least notify me about those annoying “one-field-changed-publish-all”-users. That one slide triggered at least one person, Robbert Hock. After the presentation I had a chat with him and the proposal for the SUGCON Europe 2017 was a fact. We agreed in giving a duo presentation about the Microsoft Bot Framework.

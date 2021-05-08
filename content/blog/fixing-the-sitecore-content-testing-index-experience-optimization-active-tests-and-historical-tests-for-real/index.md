@@ -8,7 +8,8 @@ tags:
   - "experience-optimization"
   - "patch"
   - "sitecore"
-coverImage: "image-6.png"
+coverImage: "image-5.png"
+img: "image-5.png"
 ---
 
 When you are working with Sitecore 9.0.1 (9.0.171219) in Azure with Azure Search you might be familiar with or experience the following symptoms.

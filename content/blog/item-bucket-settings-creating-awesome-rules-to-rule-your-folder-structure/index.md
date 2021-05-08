@@ -7,7 +7,8 @@ tags:
   - "buckets"
   - "sitecore"
   - "structure"
-coverImage: "Item-bucket-settings.jpg"
+coverImage: "./images/Item-bucket-settings.jpg"
+img: "./images/Item-bucket-settings.jpg"
 ---
 
 In Sitecore 7.5 there are great new features available like the settings for Item Buckets and especially conditions and actions for resolving the Bucket Folder Path. This way we could influence the way our Bucket Folder Paths are generated based on Sitecore's great Rules Engine.

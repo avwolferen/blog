@@ -10,6 +10,7 @@ tags:
   - "session-expiration"
   - "sitecore"
 coverImage: "Why-you-should-definately-migrate-to-92.png"
+img: "Why-you-should-definately-migrate-to-92.png"
 ---
 
 ![Family Guy Stewie GIF - FamilyGuy Stewie Brian GIFs](https://media1.tenor.com/images/4d9e32b0cef2a62ecb9f80eff279f7f2/tenor.gif?itemid=5400488)

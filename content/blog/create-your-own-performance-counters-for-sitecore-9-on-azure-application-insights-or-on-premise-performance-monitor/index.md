@@ -10,7 +10,8 @@ tags:
   - "paas"
   - "performance-counters"
   - "sitecore"
-coverImage: "image-6.png"
+coverImage: "./images/coverimage.png"
+img: "./images/coverimage.png"
 ---
 
 Everybody likes performance counters, don't you? They give a lot more information on what actually happens on your platform. Do you like using custom caches in your Sitecore solution? Do you actually know how often they are used? Do you know how many cache hits, misses and clearings you hit on those? There is an easy way to get more insights on these precious pieces of information. And that does not include your daily dose of Sitecore logs and traces.

@@ -8,7 +8,8 @@ tags:
   - "microsoft-bot-framework"
   - "sitecore"
   - "xdb"
-coverImage: "xdb-contacts.jpg"
+coverImage: "./images/xdb-contacts.jpg"
+img: "./images/xdb-contacts.jpg"
 ---
 
 How cool would it be if you could get XDB data out of Sitecore just using a simple instruction to your bot?

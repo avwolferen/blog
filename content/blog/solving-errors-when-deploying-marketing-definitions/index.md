@@ -9,7 +9,8 @@ tags:
   - "markering-definitions"
   - "repost"
   - "sitecore"
-coverImage: "Error-thumb.jpg"
+coverImage: "./images/Error-thumb.jpg"
+img: "./images/Error-thumb.jpg"
 ---
 
 Ever stumbled upon unexplainable errors while working with Sitecore? Exotic exceptions can and will appear in your Sitecore logs when you are working with migrated content from other Sitecore environments.

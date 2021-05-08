@@ -8,7 +8,8 @@ tags:
   - "notifications"
   - "publishing"
   - "sitecore"
-coverImage: "sitecore-loves-microsoft-bot-framework.jpg"
+coverImage: "./sitecore-loves-microsoft-bot-framework.jpg"
+img: "./sitecore-loves-microsoft-bot-framework.jpg"
 ---
 
 Publishing specific items or just the entire database? Just ask a Bot and it will be done.

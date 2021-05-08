@@ -9,6 +9,9 @@ tags:
   - "microsoft-bot-framework"
   - "sitecore"
   - "usermanagement"
+
+coverImage: "./sitecore-loves-microsoft-bot-framework.jpg"
+img: "./sitecore-loves-microsoft-bot-framework.jpg"
 ---
 
 "We have created a Bot for you!" doesn't mean "We have created 300 if-statements for you!". Microsoft Cognitive Services gives you LUIS and you must use this Language Understanding Intelligent Service, aka LUIS, to understand and break up the conversation.
