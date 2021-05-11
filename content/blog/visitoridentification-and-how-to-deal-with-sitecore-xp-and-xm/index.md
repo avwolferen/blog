@@ -12,31 +12,41 @@ categories:
 ---
 
 When you are working on a Sitecore solution that could make the move from Sitecore Experience Platform (XP) to Sitecore Experience Manager (XM) there are some limitations and things you really need to consider.
-## Easy peasy, XM squeezy
-One of the things is that you simply do not have Sitecore Analytics, Marketing or xDB assemblies available because of reason. Maybe you even have multiple team environments where you might think that running a full blown Sitecore XP1 is too much overkill and even a Standalone XP0 would introduce extra costs that you might not want to take.
 
-Luckily there is the option to go for a simpler Sitecore XM which it is becoming more popular lately. It comes in several flavours but the thing is that it only consists of just a few databases, a Standalone or ContentManagement and ContentDelivery role and it lacks the Reporting, Processing and all the xConnect roles and databases.
 ## Build once, deploy many!
 This blogpost shows you how you can provide some flexibility when you are building platforms that need to be able to run on Sitecore XP as well as on Sitecore XM without changing the way that you do the VisitorIdentification.
 
-Take a look at the code on [GitHub](https://github.com/avwolferen/sitecore-xp-xm) or proceed reading this blogpost.
+Look at the code on [GitHub](https://github.com/avwolferen/sitecore-xp-xm) or proceed reading this blogpost.
 
-## The underlying issue
-Because the omision of all Sitecore Analytics related asssemblies in Sitecore XM you cannot deploy and run your Sitecore XP targeted solutions directly on Sitecore XM. One of the key things in XP is  the VisitorIdentification. This piece of code requires you to introduce a lot of assemblies that you don't want on your XM instances.
+## Easy peasy, XM squeezy
+XM in short consists of a subset of features that the XP offers you. A few things that are not available are the Sitecore Analytics, Marketing and xDB components. This makes XM cheaper in terms of hosting compared to XP.
+Going for an XM is a serious option if you want to go for a simpler Sitecore topology which it is becoming more popular lately. It comes in several flavours, but the thing is that it only consists of just a few databases, a Standalone or ContentManagement and ContentDelivery role and it lacks the Reporting, Processing and all the xConnect roles and databases.
+
+## Saving money on teamstreets
+Maybe you have multiple team environments that you use fo feature development where you might think that running a full blown Sitecore XP1 is too much overkill and even a Standalone XP0 would introduce extra costs that you might not want to take.
+
+## The underlying issue of missing components
+Because the omision of all Sitecore Analytics / Marketing related asssemblies in Sitecore XM you cannot just deploy and run your Sitecore XP targeted solutions directly on Sitecore XM without failure. One of the key things in XP is the VisitorIdentification. Being able to run this requires you to introduce a lot of assemblies that you don't want on your XM instances, and that is where this solution finds its place.
+
+## Running the VisitorIdentification in a pipeline
+What I basically did is create a custom pipeline, processor, introduce a feature-toggle and SitecoreHelper extension that does the magic by making use of rule-based configuration. This will prevent you from running into Yellow Screen Of Death (YSOD) situations.
+
+There are just a few things that you need to do to make this work in your solution.
 
 ## Adding the topology appsetting
 Sometimes you need to make decisions while coding to enable or disable functionality. The easiest way on using feature toggles in Sitecore is by using rule-based configuration. More about this can be read in the official Sitecore documentation about [Rule-based configuration](https://doc.sitecore.com/developers/101/platform-administration-and-architecture/en/rule-based-configuration.html)
 
-Add one single appsetting to your web.config or AppService or whatever configuration store you are using.
+To be able to toggle features based on the topology you need to add one single appsetting to your web.config or the appSettings on your AppService. 
 
-For Sitecore XP (not required!)
+Sitecore XP
 ```xml
 <add key="topology:define" value="xp" />
 ```
-For Sitecore XM required because this one is restricting you. The code is pretty forgiving so forgetting this toggle does not give you any issues at all. Not forgetting this keeps your platform fast and sound.
+Sitecore XM
 ```xml
 <add key="topology:define" value="xm" />
 ```
+For the code on GitHub it is not required but it makes it more elegant. The code is pretty forgiving so forgetting this toggle does not give you any issues at all. Not forgetting this keeps your platform fast and sound.
 
 ## Introducing the pipeline
 To overcome the issue of the assemblies I've created a simple pipeline and processor that takes care of the rendering of the HTML that is required for the VisitorIdentification. This pipeline is extendible if you require this. The most important one is that the processor is only effective with the use of rule-based configuration in Sitecore.
@@ -65,27 +75,9 @@ To overcome the issue of the assemblies I've created a simple pipeline and proce
 ```
 You might ask yourself "Why adding this try/catch construction?" Well, I'll get back to that later in this blogpost.
 
-And the configuration.
-```xml
-<configuration xmlns:x="http://www.sitecore.com/xmlconfig/" 
-               xmlns:patch="http://www.sitecore.com/xmlconfig/" 
-               xmlns:topology="http://www.sitecore.com/xmlconfig/topology/" >
-  <sitecore>
-    <pipelines>
-      <!-- This pipeline is intended to render just the VisitorIdentification control. You can add your own logic to this pipeline but keep in mind that none of the Analytics, Marketing or xConnect assemblies are available.-->
-      <platformextensions.visitorIdentification>
-        <!-- Renders the Visitor Identification control -->
-        <processor type="AlexVanWolferen.PlatformExtensions.Pipelines.VisitorIdentification.RenderVisitorIdentificationProcessor, AlexVanWolferen.PlatformExtensions" 
-                   topology:require="!xm"
-                   patch:before="*[1]" />
-      </platformextensions.visitorIdentification>
-  </pipelines>
-  </sitecore>
-</configuration>
-```
 ## The processor
 
-The processor that I wrote is pretty simple and looks a lot like the real deal.
+The processor that I wrote is simple and looks a lot like the real deal.
 
 ```c
     public class RenderVisitorIdentificationProcessor : VisitorIdentificationBase
@@ -105,8 +97,30 @@ For the people that want to extend the pipeline, you might want to use the Visit
         public abstract void Process(VisitorIdentificationPipelineArgs args);
     }
 ```
+
+And the configuration.
+```xml
+<configuration xmlns:x="http://www.sitecore.com/xmlconfig/" 
+               xmlns:patch="http://www.sitecore.com/xmlconfig/" 
+               xmlns:topology="http://www.sitecore.com/xmlconfig/topology/" >
+  <sitecore>
+    <pipelines>
+      <!-- This pipeline is intended to render just the VisitorIdentification control. You can add your own logic to this pipeline but keep in mind that none of the Analytics, Marketing or xConnect assemblies are available.-->
+      <platformextensions.visitorIdentification>
+        <!-- Renders the Visitor Identification control -->
+        <processor type="AlexVanWolferen.PlatformExtensions.Pipelines.VisitorIdentification.RenderVisitorIdentificationProcessor, AlexVanWolferen.PlatformExtensions" 
+                   topology:require="!xm"
+                   patch:before="*[1]" />
+      </platformextensions.visitorIdentification>
+  </pipelines>
+  </sitecore>
+</configuration>
+```
+
 ## Update your views
 Please update all your view where you use the safe VisitorIdentification. Because the regular VisitorIdentification cannot be used you need to replace it with the safe and compatible one.
+
+The SitecoreHelper extensionmethod that you are going to use looks like this.
 ```c
     public static class VisitorIdentificationExtensions
     {
@@ -117,7 +131,7 @@ Please update all your view where you use the safe VisitorIdentification. Becaus
         }
     }
 ``` 
-And now replace the using:
+And for the changes in your Razor views replace the using:
 ```c
 @using Sitecore.Mvc.Analytics.Extensions
 ``` 
@@ -136,7 +150,7 @@ with
 ```
 
 ## Publish your code to your site
-Publish your code, do not forget to double check the web.config!
+Publish your code and do not forget to double check the web.config!
 
 Always test this on your local environment before rolling it out to other stages.
 
