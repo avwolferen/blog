@@ -15,6 +15,7 @@ const Sidebar = ({ siteMetadata }) => (
           </div>
           <div className="author-name">{siteMetadata.author}</div>
           <p>{siteMetadata.description}</p>
+          <p>{siteMetadata.subdescription}</p>
         </div>
       </header>
       <footer>

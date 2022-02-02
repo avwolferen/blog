@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: `Just another blog about Sitecore, tips and tricks`,
-    description: `I am a Sitecore Architect. Father of Luuk, fiancé of Marloes, hoarder of electronics. Loves to learn something new every single day.`,
+    description: `I am a Sitecore Architect. Father of Luuk and Fenna, fiancé of Marloes, hoarder of electronics. Loves to learn something new every single day.`,
+    subdescription: `Sitecore MVP Technology 2018, 2021 and 2022.`,
     author: `Alex van Wolferen`,
     siteUrl: `https://www.alexvanwolferen.nl`,
     social: {
