@@ -14,13 +14,13 @@ img: "azuresearch-index-statistics.png"
 coverImage: "azuresearch-index-statistics.png"
 ---
 
-When you are running Sitecore on Azure as a PaaS and are using Azure Search as your Content Search provider, or whether you are using Azure Search apart from that, you should be able to get statistics easily available besides running to that Azure Portal or Sitecore Indexing Manager. This blog shows how you can manage that with just a simple PowerShell script.
+Get statistics from Azure Search indexes without using the Azure Portal or Sitecore Indexing Manager. If you are running Sitecore on Azure and are using Azure Search as your Content Search provider, or whether you are using Azure Search apart from that, you should be able to get statistics easily available without using the Azure Portal or Sitecore Indexing Manager. This blog shows how you can manage that with just a simple PowerShell script.
 
 ## TL;DR;
 
 The PowerShell script can be found here. [https://github.com/avwolferen/azuresearch-stats](Azure Search Statistics). Running the [https://github.com/avwolferen/azuresearch-stats/blob/main/Test.ps1](Test.ps1)] will prompt you with logging into or selecting the proper credentials and subscription. It will list the statistics for all Azure Search resources in the selected subscription. 
 
-## Queastion: What is accesible in the Sitecore Indexing Manager?
+## Question: What is accesible in the Sitecore Indexing Manager?
 
 In the Sitecore Indexing Manager you can access the latest statistics that Sitecore is able to determine based on its own data collected by the Indexing Custodian and Indexing Jobs. This data does not come from Azure Search API's.
 
