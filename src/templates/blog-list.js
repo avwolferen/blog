@@ -100,12 +100,8 @@ query blogPageQuery($skip: Int!, $limit: Int!) {
     }
   }
   allMarkdownRemark(
-    sort: {
-      frontmatter: {
-        date: DESC
-      }
-    }, 
-    limit: $limit, 
+    sort: { fields: [frontmatter___date], order: DESC }
+    limit: $limit
     skip: $skip
     ) {
     edges {

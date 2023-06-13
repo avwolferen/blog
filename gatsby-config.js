@@ -98,7 +98,9 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
+                allMarkdownRemark(
+                  sort: { order: DESC, fields: [frontmatter___date] },
+                ) {
                   edges {
                     node {
                       excerpt
