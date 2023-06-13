@@ -40,12 +40,12 @@ module.exports = {
               withAvif: true,
             },
           },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `warn`,
-            },
-          },
+          // {
+          //   resolve: `gatsby-remark-katex`,
+          //   options: {
+          //     strict: `warn`,
+          //   },
+          // },
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
@@ -61,9 +61,17 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingId: `UA-77698879-3`,
+        trackingIds: [
+          `G-64VLXR1ZT8`,
+        ],
+        gtagConfig: {
+          anonymize_ip: true,
+        },
+        pluginConfig: {
+          respectDNT: true,
+        },
       },
     },
     {
