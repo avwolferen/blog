@@ -93,35 +93,39 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-  query blogPageQuery($skip: Int!, $limit: Int!) {
-    site {
-      siteMetadata {
-        title
-      }
+query blogPageQuery($skip: Int!, $limit: Int!) {
+  site {
+    siteMetadata {
+      title
     }
-    allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
+  }
+  allMarkdownRemark(
+    sort: {
+      frontmatter: {
+        date: DESC
+      }
+    }, 
+    limit: $limit, 
+    skip: $skip
     ) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          timeToRead
-          frontmatter {
-            date(formatString: "YYYY, MMM DD")
-            title
-            img {
-              childImageSharp {
-                gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [WEBP])
-              }
+    edges {
+      node {
+        excerpt
+        fields {
+          slug
+        }
+        timeToRead
+        frontmatter {
+          date(formatString: "YYYY, MMM DD")
+          title
+          img {
+            childImageSharp {
+              gatsbyImageData(placeholder: BLURRED, layout: FULL_WIDTH, formats: [WEBP])
             }
           }
         }
       }
     }
   }
+}
 `

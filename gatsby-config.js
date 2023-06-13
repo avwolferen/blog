@@ -40,12 +40,12 @@ module.exports = {
               withAvif: true,
             },
           },
-          {
-            resolve: `gatsby-remark-katex`,
-            options: {
-              strict: `warn`,
-            },
-          },
+          // {
+          //   resolve: `gatsby-remark-katex`,
+          //   options: {
+          //     strict: `warn`,
+          //   },
+          // },
           {
             resolve: `gatsby-remark-copy-linked-files`,
             options: {
@@ -63,7 +63,9 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-77698879-3`,
+        trackingId: `G-64VLXR1ZT8`,
+        anonymize: true,
+        respectDNT: true,
       },
     },
     {
@@ -96,9 +98,7 @@ module.exports = {
             },
             query: `
               {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
+                allMarkdownRemark(sort: {frontmatter: {date: DESC}}) {
                   edges {
                     node {
                       excerpt
