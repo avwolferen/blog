@@ -8,8 +8,8 @@ tags:
   - "docker"
   - "powershell"
   - "AllowPrerelease"
-img: "images/allowprerelease.png"
-coverImage: "images/allowprerelease.png"
+img: "images/allowprerelease.jpg"
+coverImage: "images/allowprerelease.jpg"
 ---
 
 ```
