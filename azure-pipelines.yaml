@@ -15,7 +15,7 @@ steps:
 
   - task: NodeTool@0
     inputs:
-      versionSpec: '12.x'
+      versionSpec: '18.x'
     displayName: 'Install Node.js'
 
   - script: |
@@ -30,10 +30,10 @@ steps:
       npx gatsby build
     displayName: 'gatsby build'
 
-  - task: AzureStaticWebApp@0
-    inputs:
-      app_location: '/public'
-      api_location: 'api'
-      output_location: ''
-    env:
-      azure_static_web_apps_api_token: $(deployment_token)
+  # - task: AzureStaticWebApp@0
+  #   inputs:
+  #     app_location: '/public'
+  #     api_location: 'api'
+  #     output_location: ''
+  #   env:
+  #     azure_static_web_apps_api_token: $(deployment_token)
