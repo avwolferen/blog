@@ -20,10 +20,10 @@ steps:
 
   - script: |
       npm install yarn
-    displayName: 'npm install yarn'
+    displayName: 'npm install yarn --legacy-peer-deps'
 
   - script: |
-      yarn install --legacy-peer-deps
+      yarn install
     displayName: 'yarn install'
 
   - script: |
