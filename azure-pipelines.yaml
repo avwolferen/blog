@@ -23,7 +23,7 @@ steps:
     displayName: 'npm install yarn'
 
   - script: |
-      yarn install
+      yarn install --legacy-peer-deps
     displayName: 'yarn install'
 
   - script: |
