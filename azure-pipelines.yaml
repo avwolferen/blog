@@ -27,6 +27,10 @@ steps:
     displayName: 'yarn install'
 
   - script: |
+      npx eslint .
+    displayName: 'ESLint validation'
+
+  - script: |
       npx gatsby build
     displayName: 'gatsby build'
 
