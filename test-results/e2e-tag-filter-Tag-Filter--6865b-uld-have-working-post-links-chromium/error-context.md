@@ -1,0 +1,74 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - alert [ref=e2]
+  - generic [ref=e3]:
+    - banner [ref=e4]:
+      - generic [ref=e6]:
+        - link "Alex van Wolferen" [ref=e7] [cursor=pointer]:
+          - /url: /
+          - generic [ref=e8]: Alex van Wolferen
+        - navigation [ref=e9]:
+          - link "Archive" [ref=e10] [cursor=pointer]:
+            - /url: /archive
+          - link "Tags" [ref=e11] [cursor=pointer]:
+            - /url: /tags
+          - button "Toggle theme" [ref=e12] [cursor=pointer]:
+            - img [ref=e13]
+    - main [ref=e15]:
+      - generic [ref=e16]:
+        - generic [ref=e17]:
+          - link "← All Tags" [ref=e18] [cursor=pointer]:
+            - /url: /tags
+          - heading "Posts tagged with \"9-0-1\"" [level=1] [ref=e19]
+          - paragraph [ref=e20]: 1 post found
+        - article [ref=e22]:
+          - link "Why you definitely should upgrade to Sitecore 9.2? Because of...?" [ref=e23] [cursor=pointer]:
+            - /url: /blog/why-you-definitely-should-upgrade-to-sitecore-92
+            - img "Why you definitely should upgrade to Sitecore 9.2? Because of...?" [ref=e24]
+          - generic [ref=e25]:
+            - generic [ref=e26]:
+              - time [ref=e27]: October 31, 2019
+              - generic [ref=e28]: •
+              - generic [ref=e29]: 12 min read
+            - heading "Why you definitely should upgrade to Sitecore 9.2? Because of...?" [level=2] [ref=e30]:
+              - link "Why you definitely should upgrade to Sitecore 9.2? Because of...?" [active] [ref=e31] [cursor=pointer]:
+                - /url: /blog/why-you-definitely-should-upgrade-to-sitecore-92
+            - paragraph [ref=e32]: "![Family Guy Stewie GIF - FamilyGuy Stewie Brian GIFs](https://media1.tenor.com/images/4d9e32b0cef2a62ecb9f80eff279f7f2/tenor.gif?itemid=5400488) Azure Red..."
+    - contentinfo [ref=e33]:
+      - generic [ref=e34]:
+        - generic [ref=e35]:
+          - generic [ref=e36]:
+            - heading "About" [level=3] [ref=e37]
+            - paragraph [ref=e38]: I am a Sitecore Architect. Father of Luuk and Fenna, fiancé of Marloes, hoarder of electronics. Loves to learn something new every single day.
+            - paragraph [ref=e39]: Sitecore MVP Technology 2018, 2021 and 2022
+          - generic [ref=e40]:
+            - heading "Quick Links" [level=3] [ref=e41]
+            - list [ref=e42]:
+              - listitem [ref=e43]:
+                - link "Home" [ref=e44] [cursor=pointer]:
+                  - /url: /
+              - listitem [ref=e45]:
+                - link "Archive" [ref=e46] [cursor=pointer]:
+                  - /url: /archive
+              - listitem [ref=e47]:
+                - link "Tags" [ref=e48] [cursor=pointer]:
+                  - /url: /tags
+          - generic [ref=e49]:
+            - heading "Connect" [level=3] [ref=e50]
+            - list [ref=e51]:
+              - listitem [ref=e52]:
+                - link "Twitter" [ref=e53] [cursor=pointer]:
+                  - /url: https://twitter.com/avwolferen
+              - listitem [ref=e54]:
+                - link "GitHub" [ref=e55] [cursor=pointer]:
+                  - /url: https://github.com/avwolferen
+              - listitem [ref=e56]:
+                - link "LinkedIn" [ref=e57] [cursor=pointer]:
+                  - /url: https://linkedin.com/in/alexvanwolferen
+              - listitem [ref=e58]:
+                - link "Email" [ref=e59] [cursor=pointer]:
+                  - /url: mailto:alexvanwolferen@gmail.com
+        - paragraph [ref=e61]: © 2026 Alex van Wolferen. All rights reserved.
+```

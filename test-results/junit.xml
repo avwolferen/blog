@@ -1,0 +1,43 @@
+<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="6.113673999999999">
+<testsuite name="e2e\tag-filter.spec.ts" timestamp="2026-01-19T11:57:30.749Z" hostname="chromium" tests="1" failures="1" skipped="0" time="2.886" errors="0">
+<testcase name="Tag Filter Page › should have working post links" classname="e2e\tag-filter.spec.ts" time="2.886">
+<failure message="tag-filter.spec.ts:64:7 should have working post links" type="FAILURE">
+<![CDATA[  [chromium] › e2e\tag-filter.spec.ts:64:7 › Tag Filter Page › should have working post links ──────
+
+    Error: expect(received).toContain(expected) // indexOf
+
+    Expected substring: "/blog/"
+    Received string:    "http://localhost:3000/tags/9-0-1"
+
+      86 |     await page.waitForLoadState('networkidle');
+      87 |     
+    > 88 |     expect(page.url()).toContain('/blog/');
+         |                        ^
+      89 |   });
+      90 |
+      91 |   test('should navigate to blog post and back', async ({ page }) => {
+        at C:\git\blog\tests\e2e\tag-filter.spec.ts:88:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    ..\test-results\e2e-tag-filter-Tag-Filter--6865b-uld-have-working-post-links-chromium\test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    ..\test-results\e2e-tag-filter-Tag-Filter--6865b-uld-have-working-post-links-chromium\video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ..\test-results\e2e-tag-filter-Tag-Filter--6865b-uld-have-working-post-links-chromium\error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|e2e-tag-filter-Tag-Filter--6865b-uld-have-working-post-links-chromium\test-failed-1.png]]
+
+[[ATTACHMENT|e2e-tag-filter-Tag-Filter--6865b-uld-have-working-post-links-chromium\video.webm]]
+
+[[ATTACHMENT|e2e-tag-filter-Tag-Filter--6865b-uld-have-working-post-links-chromium\error-context.md]]
+]]>
+</system-out>
+</testcase>
+</testsuite>
+</testsuites>
