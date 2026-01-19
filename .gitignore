@@ -53,8 +53,15 @@ typings/
 
 # dotenv environment variables file
 .env
+.env*.local
 
-# gatsby files
+# Next.js
+/.next/
+/out/
+next-env.d.ts
+*.tsbuildinfo
+
+# gatsby files (legacy - to be removed)
 .cache/
 public
 

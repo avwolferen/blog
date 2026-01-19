@@ -14,18 +14,30 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v4
       with:
-        node-version: '18.x'
-
-    - name: Install Yarn
-      run: npm install yarn --legacy-peer-deps
+        node-version: '22.x'
+        cache: 'npm'
 
     - name: Install dependencies
-      run: yarn install
+      run: npm ci
+
+    - name: Lint code
+      run: npm run lint
+
+    - name: Type check
+      run: npm run type-check
 
     - name: Build the project
-      run: npx gatsby build
+      run: npm run build
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      if: success()
+      with:
+        name: nextjs-build
+        path: .next
+        retention-days: 7
