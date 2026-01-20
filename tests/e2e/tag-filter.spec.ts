@@ -63,28 +63,21 @@ test.describe('Tag Filter Page', () => {
 
   test('should have working post links', async ({ page }) => {
     const firstArticle = page.locator('article').first();
-    // Prefer the heading's anchor (title link) that points to the post
-    const titleLink = firstArticle.getByRole('heading').locator('a').first();
-    const href = await titleLink.getAttribute('href');
-    
-    // If the heading anchor is missing or doesn't point to /blog/, try to find any /blog/ link inside the article
-    let finalHref = href;
-    if (!finalHref || !/\/blog\//.test(finalHref)) {
-      const blogLink = firstArticle.locator("a[href*='/blog/']").first();
-      finalHref = await blogLink.getAttribute('href') || finalHref;
-    }
-    
-    expect(finalHref).toMatch(/\/blog\/.+/);
-    
-    // Click the heading link when available, otherwise click the located blog link fallback
-    if (await titleLink.count() > 0) {
-      await titleLink.click();
-    } else {
-      const blogLink = firstArticle.locator("a[href*='/blog/']").first();
-      await blogLink.click();
-    }
+
+    // Prefer any /blog/ link inside the article (more reliable than the heading anchor)
+    const blogLink = firstArticle.locator("a[href*='/blog/']").first();
+    expect(await blogLink.count()).toBeGreaterThan(0);
+
+    const href = await blogLink.getAttribute('href');
+    expect(href).toMatch(/\/blog\/.+/);
+
+    // Click the blog link and wait for navigation (handles SPA or full navigation)
+    await Promise.all([
+      page.waitForURL('**/blog/**'),
+      blogLink.click()
+    ]);
     await page.waitForLoadState('networkidle');
-    
+
     expect(page.url()).toContain('/blog/');
   });
 
@@ -176,10 +169,14 @@ test.describe('Tag Filter Page', () => {
     const tagsLink = page.locator('a[href="/tags"]');
     
     if (await tagsLink.count() > 0) {
-      await tagsLink.click();
-      await page.waitForLoadState('networkidle');
+      // Wait for the URL change instead of relying on networkidle (SPA navigation)
+      await Promise.all([
+        page.waitForURL('**/tags', { timeout: 5000 }),
+        tagsLink.first().click()
+      ]);
       
-      expect(page.url()).toBe('http://localhost:3000/tags');
+      // Accept either with or without trailing slash and don't depend on host
+      expect(page.url()).toMatch(/\/tags\/?$/);
     }
   });
 
