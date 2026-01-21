@@ -48,6 +48,30 @@ npm install
 cp -r content public/
 ```
 
+## ☁️ GitHub Codespaces
+
+This repository is configured for GitHub Codespaces, providing a complete development environment in the cloud.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/avwolferen/blog)
+
+### Quick Start with Codespaces
+
+1. Click the "Open in GitHub Codespaces" badge above or create a new codespace from the repository
+2. Wait for the environment to build (first time setup takes ~2-3 minutes)
+3. Once ready, the dependencies are automatically installed
+4. Start developing immediately with `npm run dev`
+
+### What's Included
+
+- **Node.js 22** with TypeScript support
+- **Pre-installed VS Code extensions** for Next.js, React, Tailwind CSS, and Playwright
+- **Playwright browsers** automatically installed and configured
+- **Port forwarding** for the Next.js dev server (port 3000)
+- **GitHub CLI** for repository management
+- **Docker support** for containerized workflows
+
+All configurations are in [`.devcontainer/`](.devcontainer/) directory.
+
 ## 🏃‍♂️ Running the Application
 
 ### Development Mode
