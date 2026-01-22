@@ -1,5 +1,5 @@
 # Node.js
-# Build a Next.js project with npm.
+# Build a Next.js project with pnpm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -8,6 +8,9 @@
 
 pool:
   vmImage: ubuntu-latest
+
+variables:
+  pnpm_config_cache: $(Pipeline.Workspace)/.pnpm-store
 
 steps:
   - checkout: self
@@ -19,19 +22,41 @@ steps:
     displayName: 'Install Node.js 22'
 
   - script: |
-      npm ci
+      corepack enable
+      corepack prepare pnpm@latest --activate
+    displayName: 'Install pnpm'
+
+  - task: Cache@2
+    inputs:
+      key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+      restoreKeys: |
+        pnpm | "$(Agent.OS)"
+      path: $(pnpm_config_cache)
+    displayName: 'Cache pnpm store'
+
+  - task: Cache@2
+    inputs:
+      key: 'nextjs | "$(Agent.OS)" | pnpm-lock.yaml | **/*.ts, **/*.tsx, **/*.js, **/*.jsx, **/*.md'
+      restoreKeys: |
+        nextjs | "$(Agent.OS)" | pnpm-lock.yaml
+        nextjs | "$(Agent.OS)"
+      path: .next/cache
+    displayName: 'Cache Next.js build'
+
+  - script: |
+      pnpm install --frozen-lockfile
     displayName: 'Install dependencies'
 
   - script: |
-      npm run lint
+      pnpm run lint
     displayName: 'Lint code'
 
   - script: |
-      npm run type-check
+      pnpm run type-check
     displayName: 'Type check'
 
   - script: |
-      npm run build
+      pnpm run build
     displayName: 'Build Next.js application'
 
   # Uncomment to deploy to Azure Static Web Apps
