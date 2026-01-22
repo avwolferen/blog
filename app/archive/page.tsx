@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { getPostsByDate } from '@/lib/markdown';
-import { format } from 'date-fns';
 
 export const metadata = {
   title: 'Archive',

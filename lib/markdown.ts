@@ -114,33 +114,40 @@ export function getPostsByDate(): PostsByDate[] {
     if (!postsByYear.has(year)) {
       postsByYear.set(year, new Map());
     }
-    const yearMap = postsByYear.get(year)!;
+    const yearMap = postsByYear.get(year);
+    if (!yearMap) return;
 
     if (!yearMap.has(month)) {
       yearMap.set(month, new Map());
     }
-    const monthMap = yearMap.get(month)!;
+    const monthMap = yearMap.get(month);
+    if (!monthMap) return;
 
     if (!monthMap.has(day)) {
       monthMap.set(day, []);
     }
-    monthMap.get(day)!.push(post);
+    const dayPosts = monthMap.get(day);
+    if (dayPosts) {
+      dayPosts.push(post);
+    }
   });
 
   const result: PostsByDate[] = [];
   const sortedYears = Array.from(postsByYear.keys()).sort((a, b) => b - a);
 
   sortedYears.forEach((year) => {
-    const months = postsByYear.get(year)!;
+    const months = postsByYear.get(year);
+    if (!months) return;
     const sortedMonths = Array.from(months.keys()).sort((a, b) => b - a);
 
     const monthsData = sortedMonths.map((month) => {
-      const days = months.get(month)!;
+      const days = months.get(month);
+      if (!days) return { month, monthName: '', days: [] };
       const sortedDays = Array.from(days.keys()).sort((a, b) => b - a);
 
       const daysData = sortedDays.map((day) => ({
         day,
-        posts: days.get(day)!,
+        posts: days.get(day) ?? [],
       }));
 
       return {
