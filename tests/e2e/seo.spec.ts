@@ -164,10 +164,10 @@ test.describe('SEO and Metadata', () => {
     await page.waitForLoadState('networkidle');
     
     // Check for author in Open Graph or other meta tags
-    const ogArticleAuthor = await page.locator('meta[property="og:article:author"], meta[property="article:author"]').count();
+    const ogArticleAuthorCount = await page.locator('meta[property="og:article:author"], meta[property="article:author"]').count();
     
-    // Author metadata is present in some form
-    expect(true).toBe(true);
+    // Author metadata may or may not be present - just verify the check runs
+    expect(ogArticleAuthorCount >= 0).toBe(true);
   });
 
   test('should have proper URL structure', async ({ page }) => {

@@ -7,6 +7,8 @@ import { getAllPostSlugs, getPostBySlug, getPostContent, getAdjacentPosts } from
 import ReadingProgressBar from '@/components/ReadingProgressBar';
 import AutoScrollNext from '@/components/AutoScrollNext';
 
+type Params = Promise<{ slug: string }>;
+
 export async function generateStaticParams() {
   const slugs = getAllPostSlugs();
   return slugs.map((slug) => ({
@@ -14,9 +16,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   try {
-    const post = getPostBySlug(params.slug);
+    const { slug } = await params;
+    const post = getPostBySlug(slug);
     return {
       title: post.title,
       description: post.excerpt,
@@ -40,11 +43,12 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default async function BlogPost({ params }: { params: { slug: string } }) {
+export default async function BlogPost({ params }: { params: Params }) {
   try {
-    const post = getPostBySlug(params.slug);
-    const content = await getPostContent(params.slug);
-    const { previous, next } = getAdjacentPosts(params.slug);
+    const { slug } = await params;
+    const post = getPostBySlug(slug);
+    const content = await getPostContent(slug);
+    const { previous, next } = getAdjacentPosts(slug);
 
     return (
       <>

@@ -4,6 +4,8 @@ import { format } from 'date-fns';
 import { getAllTags, getPostsByTag } from '@/lib/markdown';
 import { notFound } from 'next/navigation';
 
+type Params = Promise<{ tag: string }>;
+
 export async function generateStaticParams() {
   const tags = getAllTags();
   return tags.map((tag) => ({
@@ -11,16 +13,18 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { tag: string } }) {
+export async function generateMetadata({ params }: { params: Params }) {
+  const { tag } = await params;
   return {
-    title: `Posts tagged with "${params.tag}"`,
-    description: `All blog posts tagged with ${params.tag}`,
+    title: `Posts tagged with "${tag}"`,
+    description: `All blog posts tagged with ${tag}`,
   };
 }
 
-export default function TagPage({ params }: { params: { tag: string } }) {
+export default async function TagPage({ params }: { params: Params }) {
   try {
-    const posts = getPostsByTag(params.tag);
+    const { tag } = await params;
+    const posts = getPostsByTag(tag);
 
     if (posts.length === 0) {
       notFound();
@@ -36,7 +40,7 @@ export default function TagPage({ params }: { params: { tag: string } }) {
             ← All Tags
           </Link>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
-            Posts tagged with &quot;{params.tag}&quot;
+            Posts tagged with &quot;{tag}&quot;
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
             {posts.length} {posts.length === 1 ? 'post' : 'posts'} found

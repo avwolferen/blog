@@ -250,12 +250,10 @@ test.describe('Tablet Responsiveness', () => {
       const firstBox = await articles.nth(0).boundingBox();
       const secondBox = await articles.nth(1).boundingBox();
       
-      // On tablet, articles might be side by side
-      // Check if they're roughly at the same y position (grid layout)
-      const yDifference = Math.abs(firstBox!.y - secondBox!.y);
-      
-      // Either stacked or in a grid
-      expect(true).toBe(true);
+      // On tablet, articles might be side by side or stacked
+      // Verify both articles have valid positions
+      expect(firstBox).toBeTruthy();
+      expect(secondBox).toBeTruthy();
     }
   });
 });

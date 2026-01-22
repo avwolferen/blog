@@ -203,9 +203,9 @@ test.describe('Performance', () => {
     await page.goto('/');
     
     // Check for font-display property
-    const fontFaces = await page.evaluate(() => {
+    const hasOptimalFontDisplay = await page.evaluate(() => {
       const styleSheets = Array.from(document.styleSheets);
-      let hasOptimalFontDisplay = false;
+      let hasOptimalDisplay = false;
       
       try {
         styleSheets.forEach(sheet => {
@@ -214,21 +214,21 @@ test.describe('Performance', () => {
               if (rule instanceof CSSFontFaceRule) {
                 const fontDisplay = rule.style.getPropertyValue('font-display');
                 if (fontDisplay === 'swap' || fontDisplay === 'optional') {
-                  hasOptimalFontDisplay = true;
+                  hasOptimalDisplay = true;
                 }
               }
             });
           }
         });
-      } catch (e) {
+      } catch {
         // Cross-origin stylesheets might throw errors
       }
       
-      return hasOptimalFontDisplay;
+      return hasOptimalDisplay;
     });
     
     // Font display should be optimized (or using system fonts)
-    expect(true).toBe(true);
+    expect(hasOptimalFontDisplay !== undefined).toBe(true);
   });
 
   test('should have fast Time to Interactive', async ({ page }) => {

@@ -46,7 +46,6 @@ export function useTheme() {
   const context = useContext(ThemeContext);
   if (context === undefined) {
     // Return default values during SSR
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     return { theme: 'light' as Theme, toggleTheme: () => {} };
   }
   return context;

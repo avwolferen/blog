@@ -1,4 +1,5 @@
 import type { Config } from 'tailwindcss'
+import type { PluginAPI } from 'tailwindcss/types/config'
 
 const config: Config = {
   content: [
@@ -24,7 +25,7 @@ const config: Config = {
           950: '#082f49',
         },
       },
-      typography: (theme: any) => ({
+      typography: (theme: PluginAPI['theme']) => ({
         DEFAULT: {
           css: {
             maxWidth: 'none',
@@ -80,6 +81,7 @@ const config: Config = {
     },
   },
   plugins: [
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
     require('@tailwindcss/typography'),
   ],
 }

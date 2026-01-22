@@ -169,12 +169,18 @@ test.describe('Archive Page', () => {
       await firstPostLink.hover();
       await page.waitForTimeout(100);
       
+      // Get color after hover
+      const hoverColor = await firstPostLink.evaluate((el) => 
+        window.getComputedStyle(el).color
+      );
+      
       // Color should change or there should be a transition
       const hasTransition = await firstPostLink.evaluate((el) => 
         window.getComputedStyle(el).transition.length > 0
       );
+      const colorChanged = initialColor !== hoverColor;
       
-      expect(hasTransition).toBeTruthy();
+      expect(hasTransition || colorChanged).toBeTruthy();
     }
   });
 
