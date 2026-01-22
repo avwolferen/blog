@@ -18,7 +18,7 @@ test.describe('Homepage', () => {
   });
 
   test('should display MVP tagline', async ({ page }) => {
-    const tagline = page.getByText(/Sitecore MVP Technology 2018, 2021 and 2022/i);
+    const tagline = page.getByRole('main').getByText(/Sitecore MVP Technology 2018, 2021 and 2022/i);
     await expect(tagline).toBeVisible();
   });
 
