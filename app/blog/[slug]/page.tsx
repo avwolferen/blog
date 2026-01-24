@@ -58,7 +58,7 @@ export default async function BlogPost({ params }: { params: Params }) {
             {post.coverImage && (
               <div className="relative w-full h-96 mb-8 rounded-lg overflow-hidden">
                 <Image
-                  src={`/content/blog/${post.slug}/${post.coverImage}`}
+                  src={`/content/blog/${encodeURIComponent(post.slug)}/${encodeURIComponent(post.coverImage)}`}
                   alt={post.title}
                   fill
                   className="object-cover"
@@ -85,7 +85,7 @@ export default async function BlogPost({ params }: { params: Params }) {
                 {post.tags.map((tag) => (
                   <Link
                     key={tag}
-                    href={`/tags/${tag}`}
+                    href={`/tags/${encodeURIComponent(tag)}`}
                     className="text-sm px-3 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
                   >
                     {tag}
@@ -104,7 +104,7 @@ export default async function BlogPost({ params }: { params: Params }) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {previous && (
                 <Link
-                  href={`/blog/${previous.slug}`}
+                  href={`/blog/${encodeURIComponent(previous.slug)}`}
                   className="group p-6 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
                 >
                   <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">← Previous Post</div>
@@ -116,7 +116,7 @@ export default async function BlogPost({ params }: { params: Params }) {
 
               {next && (
                 <Link
-                  href={`/blog/${next.slug}`}
+                  href={`/blog/${encodeURIComponent(next.slug)}`}
                   className="group p-6 rounded-lg bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors md:text-right"
                 >
                   <div className="text-sm text-gray-500 dark:text-gray-400 mb-2">Next Post →</div>
