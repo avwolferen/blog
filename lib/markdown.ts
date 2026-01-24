@@ -5,15 +5,30 @@ import { BlogPost, BlogFrontmatter, PostsByDate } from '@/types/blog';
 
 const postsDirectory = path.join(process.cwd(), 'content/blog');
 
+// Normalize a raw slug/directory name into a URL-safe slug consisting of
+// lowercase letters, numbers and hyphens.
+function normalizeSlug(rawSlug: string): string {
+  return rawSlug
+    .trim()
+    .toLowerCase()
+    // Replace any sequence of non-alphanumeric characters with a single hyphen
+    .replace(/[^a-z0-9]+/g, '-')
+    // Remove leading/trailing hyphens
+    .replace(/^-+|-+$/g, '');
+}
+
 export function getAllPostSlugs(): string[] {
   const folders = fs.readdirSync(postsDirectory);
-  return folders.filter((folder) => {
-    const folderPath = path.join(postsDirectory, folder);
-    return fs.statSync(folderPath).isDirectory();
-  });
+  return folders
+    .filter((folder) => {
+      const folderPath = path.join(postsDirectory, folder);
+      return fs.statSync(folderPath).isDirectory();
+    })
+    .map((folder) => normalizeSlug(folder));
 }
 
 export function getPostBySlug(slug: string): BlogPost {
+  const normalizedSlug = normalizeSlug(slug);
   const fullPath = path.join(postsDirectory, slug, 'index.md');
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
@@ -33,7 +48,7 @@ export function getPostBySlug(slug: string): BlogPost {
   }
 
   return {
-    slug,
+    slug: normalizedSlug,
     title: frontmatter.title,
     date: frontmatter.date,
     categories: frontmatter.categories,
