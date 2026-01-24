@@ -175,9 +175,8 @@ test.describe('Performance', () => {
     // Click internal link
     const archiveLink = page.getByRole('link', { name: /Archive/i }).first();
     
-    const navigationPromise = page.waitForNavigation();
     await archiveLink.click();
-    await navigationPromise;
+    await page.waitForURL('**/archive');
     
     // Should navigate quickly (client-side routing)
     expect(page.url()).toContain('/archive');
