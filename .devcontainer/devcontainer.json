@@ -1,6 +1,6 @@
 {
   "name": "Blog Development",
-  "image": "mcr.microsoft.com/devcontainers/typescript-node:22",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
   
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -10,25 +10,11 @@
   "customizations": {
     "vscode": {
       "extensions": [
-        "dbaeumer.vscode-eslint",
-        "esbenp.prettier-vscode",
-        "bradlc.vscode-tailwindcss",
         "ms-playwright.playwright",
-        "yzhang.markdown-all-in-one",
-        "streetsidesoftware.code-spell-checker",
         "GitHub.copilot",
         "GitHub.copilot-chat"
       ],
       "settings": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "editor.codeActionsOnSave": {
-          "source.fixAll.eslint": "explicit"
-        },
-        "typescript.tsdk": "node_modules/typescript/lib",
-        "tailwindCSS.experimental.classRegex": [
-          ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
-        ]
       }
     }
   },
@@ -40,8 +26,6 @@
       "onAutoForward": "notify"
     }
   },
-
-  "postCreateCommand": "npm install && npx playwright install --with-deps",
   
   "remoteUser": "node"
 }
