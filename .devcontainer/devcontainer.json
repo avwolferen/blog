@@ -26,6 +26,8 @@
       "onAutoForward": "notify"
     }
   },
+
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@9.12.1 --activate",
   
   "remoteUser": "node"
 }
