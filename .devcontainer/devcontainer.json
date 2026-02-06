@@ -1,6 +1,6 @@
 {
   "name": "Blog Development",
-  "image": "mcr.microsoft.com/devcontainers/javascript-node:22",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
   
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {},
@@ -27,7 +27,7 @@
     }
   },
 
-  "postCreateCommand": "corepack enable && corepack prepare pnpm@9.12.1 --activate",
+  "postCreateCommand": "pnpm install && pnpm exec playwright install --with-deps",
   
   "remoteUser": "node"
 }

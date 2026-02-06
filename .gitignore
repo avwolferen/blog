@@ -82,3 +82,5 @@ playwright-report
 test-results
 
 public
+
+.pnpm-store
