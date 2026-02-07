@@ -7,7 +7,7 @@ export default function NotFound() {
         404
       </h1>
       <h2 className="text-2xl font-semibold text-gray-700 dark:text-gray-300 mb-6">
-        Page Not Found
+        Yikes! Page Not Found
       </h2>
       <p className="text-gray-600 dark:text-gray-400 mb-8">
         Sorry, the page you&apos;re looking for doesn&apos;t exist.
