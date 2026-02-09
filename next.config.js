@@ -1,0 +1,40 @@
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'standalone',
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:slug((?!blog|archive|tags|api|_next|content).+)',
+        destination: '/blog/:slug',
+        permanent: true,
+      },
+    ];
+  },
+  // Next.js 16: Turbopack configuration for markdown files
+  turbopack: {
+    rules: {
+      '*.md': {
+        loaders: ['raw-loader'],
+        as: '*.js',
+      },
+    },
+  },
+  // Webpack fallback for non-Turbopack builds
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.md$/,
+      type: 'asset/source',
+    });
+    return config;
+  },
+  experimental: {
+    optimizePackageImports: ['date-fns', '@heroicons/react'],
+  },
+};
+
+module.exports = nextConfig;

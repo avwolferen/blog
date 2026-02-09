@@ -1,5 +1,5 @@
 # Node.js
-# Build a general Node.js project with npm.
+# Build a Next.js project with pnpm.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
@@ -9,31 +9,61 @@
 pool:
   vmImage: ubuntu-latest
 
+variables:
+  pnpm_config_cache: $(Pipeline.Workspace)/.pnpm-store
+
 steps:
   - checkout: self
     submodules: true
 
   - task: NodeTool@0
     inputs:
-      versionSpec: '18.x'
-    displayName: 'Install Node.js'
+      versionSpec: '22.x'
+    displayName: 'Install Node.js 22'
 
   - script: |
-      npm install yarn --legacy-peer-deps
-    displayName: 'npm install yarn --legacy-peer-deps'
+      corepack enable
+      corepack prepare pnpm@latest --activate
+    displayName: 'Install pnpm'
+
+  # - task: Cache@2
+  #   inputs:
+  #     key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+  #     restoreKeys: |
+  #       pnpm | "$(Agent.OS)"
+  #     path: $(pnpm_config_cache)
+  #   displayName: 'Cache pnpm store'
+
+  - task: Cache@2
+    inputs:
+      key: 'nextjs | "$(Agent.OS)" | pnpm-lock.yaml | **/*.ts, **/*.tsx, **/*.js, **/*.jsx, **/*.md'
+      restoreKeys: |
+        nextjs | "$(Agent.OS)" | pnpm-lock.yaml
+        nextjs | "$(Agent.OS)"
+      path: .next/cache
+    displayName: 'Cache Next.js build'
 
   - script: |
-      yarn install
-    displayName: 'yarn install'
+      pnpm install --frozen-lockfile
+    displayName: 'Install dependencies'
 
   - script: |
-      npx gatsby build
-    displayName: 'gatsby build'
+      pnpm run lint
+    displayName: 'Lint code'
 
+  - script: |
+      pnpm run type-check
+    displayName: 'Type check'
+
+  - script: |
+      pnpm run build
+    displayName: 'Build Next.js application'
+
+  # Uncomment to deploy to Azure Static Web Apps
   # - task: AzureStaticWebApp@0
   #   inputs:
-  #     app_location: '/public'
-  #     api_location: 'api'
-  #     output_location: ''
+  #     app_location: '/'
+  #     output_location: '.next'
   #   env:
   #     azure_static_web_apps_api_token: $(deployment_token)
+

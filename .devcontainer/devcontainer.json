@@ -1,0 +1,33 @@
+{
+  "name": "Blog Development",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:22-bookworm",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-playwright.playwright",
+        "GitHub.copilot",
+        "GitHub.copilot-chat"
+      ],
+      "settings": {
+      }
+    }
+  },
+
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Next.js Dev Server",
+      "onAutoForward": "notify"
+    }
+  },
+
+  "postCreateCommand": "pnpm install && pnpm exec playwright install --with-deps",
+  
+  "remoteUser": "node"
+}

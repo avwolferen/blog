@@ -1,53 +1,245 @@
-<h1 align="center">
-  Flexible Gatsby
-</h1>
+# Alex van Wolferen's Blog
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/a0a6e226-6c7a-43e0-bab6-0c658c8abca5/deploy-status)](https://app.netlify.com/sites/flexible-gatsby/deploys)
+> Just another blog about Sitecore, tips and tricks
 
-A simple minimalist Gatsby starter for your blog. [Demo](https://flexible-gatsby.netlify.com/).
+A modern, high-performance blog built with Next.js 14, TypeScript, and Tailwind CSS. This blog focuses on Sitecore architecture, development tips, Azure, and web technologies.
 
-Inspired by [flexible-jekyll](https://github.com/artemsheludko/flexible-jekyll).
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.0.0-brightgreen)](https://nodejs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2-black)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-![home-page-screenshot](./static/promo-img.jpg)
+## 🚀 Features
 
-![home-page-screenshot](./static/home-page.jpg)
+- **Modern Tech Stack**: Built with Next.js 14 (App Router), React 18, and TypeScript
+- **Markdown-Based Content**: Write blog posts in Markdown with frontmatter metadata
+- **Dark Mode Support**: Automatic dark/light theme switching with system preference detection
+- **Optimized Images**: Next.js Image optimization with AVIF and WebP support
+- **Syntax Highlighting**: Code blocks with Prism.js syntax highlighting
+- **SEO Optimized**: Built-in metadata, Open Graph, and Twitter Card support
+- **Reading Time Estimation**: Automatic calculation of reading time for each post
+- **Responsive Design**: Mobile-first design with Tailwind CSS
+- **Tag & Category System**: Organize posts by tags and categories
+- **Archive View**: Browse posts chronologically
+- **RSS Feed Support**: Auto-generated RSS feed for blog posts
+- **Google Analytics**: Integrated analytics tracking
+- **Azure Static Web Apps Ready**: Configured for deployment to Azure
 
-![blog-page-screenshot](./static/post-example.jpg)
+## 📋 Prerequisites
 
-## Quick Start 🚀
+- **Node.js**: >= 22.0.0
+- **npm**: >= 10.0.0
 
-1.  **Create a Gatsby site.**
+## 🛠️ Installation
 
-    Use the Gatsby CLI to create a new site, specifying the default starter.
+1. Clone the repository:
+```bash
+git clone https://github.com/avwolferen/blog.git
+cd blog
+```
 
-    ```sh
-    # create a new Gatsby site using the-plain-gatsby starter
-    gatsby new my-blog https://github.com/wangonya/flexible-gatsby
-    ```
+2. Install dependencies:
+```bash
+npm install
+```
 
-2.  **Start developing.**
+3. Copy content to public directory (if needed):
+```bash
+cp -r content public/
+```
 
-    Navigate into your new site’s directory and start it up.
+## ☁️ GitHub Codespaces
 
-    ```sh
-    cd my-blog/
-    gatsby develop
-    ```
+This repository is configured for GitHub Codespaces, providing a complete development environment in the cloud.
 
-3.  **Open the source code and start editing!**
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/avwolferen/blog)
 
-    Your site is now running at `http://localhost:8000`!
+### Quick Start with Codespaces
 
-    _Note: You'll also see a second link: _`http://localhost:8000/___graphql`_. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby tutorial](https://www.gatsbyjs.org/tutorial/part-five/#introducing-graphiql)._
+1. Click the "Open in GitHub Codespaces" badge above or create a new codespace from the repository
+2. Wait for the environment to build (first time setup takes ~2-3 minutes)
+3. Once ready, the dependencies are automatically installed
+4. Start developing immediately with `npm run dev`
 
-    Edit `gatsby.config.js` to update site metadata.
+### What's Included
 
-    Add blog posts in markdown in `content/blog`. Example blog posts have been provided.
+- **Node.js 22** with TypeScript support
+- **Pre-installed VS Code extensions** for Next.js, React, Tailwind CSS, and Playwright
+- **Playwright browsers** automatically installed and configured
+- **Port forwarding** for the Next.js dev server (port 3000)
+- **GitHub CLI** for repository management
+- **Docker support** for containerized workflows
 
-## Contributors
+All configurations are in [`.devcontainer/`](.devcontainer/) directory.
 
-Much thanks to these contributors for making this project awesome:
+## 🏃‍♂️ Running the Application
 
--   [@scottelundgren](https://github.com/scottelundgren)
--   [@sparky005](https://github.com/sparky005)
--   [@wozniaklukasz](https://github.com/wozniaklukasz)
+### Development Mode
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the blog.
+
+### Production Build
+```bash
+npm run build
+npm start
+```
+
+### Type Checking
+```bash
+npm run type-check
+```
+
+### Linting
+```bash
+npm run lint
+```
+
+## 📁 Project Structure
+
+```
+blog/
+├── app/                      # Next.js App Router pages
+│   ├── page.tsx             # Homepage with featured posts
+│   ├── layout.tsx           # Root layout with metadata
+│   ├── archive/             # Archive page for all posts
+│   ├── blog/[slug]/         # Dynamic blog post pages
+│   └── tags/                # Tag listing and filtering
+├── components/              # React components
+│   ├── Header.tsx           # Site header with navigation
+│   ├── Footer.tsx           # Site footer
+│   ├── ThemeProvider.tsx    # Dark mode theme provider
+│   ├── GoogleAnalytics.tsx  # Analytics component
+│   └── ...
+├── content/                 # Blog content (Markdown files)
+│   ├── blog/                # Individual blog posts
+│   │   └── [post-slug]/
+│   │       ├── index.md     # Post content with frontmatter
+│   │       └── *.png/jpg    # Post images
+│   └── assets/              # Shared assets
+├── lib/                     # Utility functions
+│   └── markdown.ts          # Markdown processing utilities
+├── types/                   # TypeScript type definitions
+│   └── blog.ts              # Blog post types
+├── public/                  # Static assets
+│   ├── staticwebapp.config.json  # Azure Static Web Apps config
+│   └── robots.txt           # SEO robots file
+├── next.config.js           # Next.js configuration
+├── tailwind.config.ts       # Tailwind CSS configuration
+├── tsconfig.json            # TypeScript configuration
+└── azure-pipelines.yaml     # Azure DevOps CI/CD pipeline
+```
+
+## ✍️ Creating a Blog Post
+
+1. Create a new folder in `content/blog/` with your post slug:
+```bash
+mkdir content/blog/my-new-post
+```
+
+2. Create an `index.md` file with frontmatter:
+```markdown
+---
+title: "My New Post Title"
+date: "2026-01-19"
+categories: ["Sitecore", "Development"]
+tags: ["next.js", "typescript", "tutorial"]
+coverImage: "./cover.png"
+---
+
+Your post content goes here...
+```
+
+3. Add images to the same folder and reference them in your markdown:
+```markdown
+![Alt text](./image.png)
+```
+
+## 🎨 Customization
+
+### Theme Colors
+Edit `tailwind.config.ts` to customize the color scheme:
+```typescript
+colors: {
+  primary: {
+    // Your custom colors
+  }
+}
+```
+
+### Site Metadata
+Update metadata in `app/layout.tsx`:
+```typescript
+export const metadata: Metadata = {
+  title: 'Your Blog Title',
+  description: 'Your description',
+  // ...
+}
+```
+
+## 🚢 Deployment
+
+### Azure Static Web Apps
+
+This blog is configured for deployment to Azure Static Web Apps:
+
+1. The `staticwebapp.config.json` file contains routing and header configurations
+2. The `azure-pipelines.yaml` file provides CI/CD pipeline setup
+3. Use Node.js 22 runtime as specified in the configuration
+
+### Other Platforms
+
+The app uses `output: 'standalone'` mode, making it compatible with:
+- Vercel
+- Netlify
+- Docker containers
+- Traditional Node.js hosting
+
+## 🧰 Technologies Used
+
+### Core
+- [Next.js 14](https://nextjs.org/) - React framework
+- [React 18](https://react.dev/) - UI library
+- [TypeScript](https://www.typescriptlang.org/) - Type safety
+
+### Styling
+- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
+- [@tailwindcss/typography](https://github.com/tailwindcss/typography) - Prose styling
+
+### Content & Markdown
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) - Frontmatter parsing
+- [marked](https://marked.js.org/) - Markdown parsing
+- [Prism.js](https://prismjs.com/) - Syntax highlighting
+
+### Utilities
+- [date-fns](https://date-fns.org/) - Date manipulation
+- [Sharp](https://sharp.pixelplumbing.com/) - Image optimization
+- [Heroicons](https://heroicons.com/) - SVG icons
+
+## 👤 Author
+
+**Alex van Wolferen**
+- Sitecore MVP Technology 2018, 2021, and 2022
+- Twitter: [@avwolferen](https://twitter.com/avwolferen)
+- Website: [alexvanwolferen.nl](https://www.alexvanwolferen.nl)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
+
+## 📊 Build Status
+
+The project includes Azure DevOps pipeline configuration for:
+- Dependency installation
+- Code linting
+- Type checking
+- Production builds
+
+---
+
+**Note**: This blog focuses on Sitecore architecture, Azure development, and modern web technologies. Content reflects personal experiences and technical insights from a Sitecore MVP.
