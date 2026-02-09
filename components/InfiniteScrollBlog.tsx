@@ -19,6 +19,15 @@ interface InfiniteScrollBlogProps {
   previousPost: BlogPost | null;
 }
 
+// Prose styling classes for blog post content
+const PROSE_CLASSES =
+  'prose prose-lg dark:prose-dark max-w-none ' +
+  'prose-headings:font-bold ' +
+  'prose-a:text-primary-600 dark:prose-a:text-primary-400 ' +
+  'prose-img:rounded-lg ' +
+  'prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded ' +
+  'prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 prose-pre:text-gray-900 dark:prose-pre:text-gray-100';
+
 export default function InfiniteScrollBlog({
   initialPost,
   initialContent,
@@ -210,7 +219,7 @@ export default function InfiniteScrollBlog({
           </header>
 
           <div
-            className="prose prose-lg dark:prose-dark max-w-none prose-headings:font-bold prose-a:text-primary-600 dark:prose-a:text-primary-400 prose-img:rounded-lg prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-100 dark:prose-pre:bg-gray-900 prose-pre:text-gray-900 dark:prose-pre:text-gray-100"
+            className={PROSE_CLASSES}
             dangerouslySetInnerHTML={{ __html: loadedPost.content }}
           />
 
