@@ -2,28 +2,29 @@
 
 > Just another blog about Sitecore, tips and tricks
 
-A modern, high-performance blog built with Next.js 14, TypeScript, and Tailwind CSS. This blog focuses on Sitecore architecture, development tips, Azure, and web technologies.
+A modern, high-performance blog built with Next.js 16, React 19, TypeScript, and Tailwind CSS. This blog focuses on Sitecore architecture, development tips, Azure, and web technologies.
 
 [![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.0.0-brightgreen)](https://nodejs.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-14.2-black)](https://nextjs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.1-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.0-blue)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🚀 Features
 
-- **Modern Tech Stack**: Built with Next.js 14 (App Router), React 18, and TypeScript
+- **Modern Tech Stack**: Built with Next.js 16 (App Router), React 19, and TypeScript 5.7
 - **Markdown-Based Content**: Write blog posts in Markdown with frontmatter metadata
 - **Dark Mode Support**: Automatic dark/light theme switching with system preference detection
 - **Optimized Images**: Next.js Image optimization with AVIF and WebP support
-- **Syntax Highlighting**: Code blocks with Prism.js syntax highlighting
-- **SEO Optimized**: Built-in metadata, Open Graph, and Twitter Card support
-- **Reading Time Estimation**: Automatic calculation of reading time for each post
-- **Responsive Design**: Mobile-first design with Tailwind CSS
-- **Tag & Category System**: Organize posts by tags and categories
+- **Responsive Design**: Mobile-first design with Tailwind CSS and responsive typography
+- **Reading Progress Bar**: Visual indicator of reading progress on blog posts
+- **Infinite Scroll**: Smooth infinite scrolling for browsing posts
+- **Auto-Scroll Navigation**: Automatic scroll to next post functionality
+- **Tag & Category System**: Organize and filter posts by tags and categories
 - **Archive View**: Browse posts chronologically
-- **RSS Feed Support**: Auto-generated RSS feed for blog posts
+- **SEO Optimized**: Built-in metadata, Open Graph, and Twitter Card support
 - **Google Analytics**: Integrated analytics tracking
-- **Azure Static Web Apps Ready**: Configured for deployment to Azure
+- **Comprehensive Testing**: E2E testing with Playwright and anti-flakiness patterns
 
 ## 📋 Prerequisites
 
@@ -41,11 +42,6 @@ cd blog
 2. Install dependencies:
 ```bash
 npm install
-```
-
-3. Copy content to public directory (if needed):
-```bash
-cp -r content public/
 ```
 
 ## ☁️ GitHub Codespaces
@@ -75,9 +71,17 @@ All configurations are in [`.devcontainer/`](.devcontainer/) directory.
 ## 🏃‍♂️ Running the Application
 
 ### Development Mode
+
+Start the development server with Turbopack (faster):
 ```bash
 npm run dev
 ```
+
+Or use Webpack:
+```bash
+npm run dev:webpack
+```
+
 Open [http://localhost:3000](http://localhost:3000) to view the blog.
 
 ### Production Build
@@ -96,39 +100,89 @@ npm run type-check
 npm run lint
 ```
 
+## 🧪 Testing
+
+This project uses Playwright for end-to-end testing with comprehensive anti-flakiness patterns.
+
+### Run All Tests
+```bash
+npm test
+```
+
+### Run Tests with UI Mode
+```bash
+npm run test:ui
+```
+
+### Run Tests in Specific Browser
+```bash
+npm run test:chromium
+npm run test:firefox
+npm run test:webkit
+```
+
+### Run Mobile Tests
+```bash
+npm run test:mobile
+```
+
+### Run Tests with Retries (CI-like)
+```bash
+npm run test:stable
+```
+
+### Additional Testing Resources
+
+- [Test Summary](TEST_SUMMARY.md) - Overview of all tests
+- [Anti-Flakiness Configuration](PLAYWRIGHT_ANTI_FLAKINESS_CONFIG.md) - Detailed Playwright setup
+- [Anti-Flakiness Quick Reference](ANTI_FLAKINESS_QUICK_REF.md) - Best practices guide
+- [Quick Start Testing Guide](QUICK_START_TESTING.md) - Getting started with tests
+
 ## 📁 Project Structure
 
 ```
 blog/
-├── app/                      # Next.js App Router pages
-│   ├── page.tsx             # Homepage with featured posts
-│   ├── layout.tsx           # Root layout with metadata
-│   ├── archive/             # Archive page for all posts
-│   ├── blog/[slug]/         # Dynamic blog post pages
-│   └── tags/                # Tag listing and filtering
-├── components/              # React components
-│   ├── Header.tsx           # Site header with navigation
-│   ├── Footer.tsx           # Site footer
-│   ├── ThemeProvider.tsx    # Dark mode theme provider
-│   ├── GoogleAnalytics.tsx  # Analytics component
-│   └── ...
-├── content/                 # Blog content (Markdown files)
-│   ├── blog/                # Individual blog posts
+├── .devcontainer/           # GitHub Codespaces configuration
+├── .github/                 # GitHub Actions and workflows
+├── app/                     # Next.js App Router pages
+│   ├── page.tsx            # Homepage with featured posts
+│   ├── layout.tsx          # Root layout with metadata
+│   ├── globals.css         # Global styles
+│   ├── api/                # API routes (content endpoint)
+│   ├── archive/            # Archive page for all posts
+│   ├── blog/[slug]/        # Dynamic blog post pages
+│   ├── content/[...path]/  # Dynamic content pages
+│   ├── tags/               # Tag listing and filtering
+│   └── not-found.tsx       # 404 page
+├── components/             # React components
+│   ├── Header.tsx          # Site header with navigation
+│   ├── Footer.tsx          # Site footer
+│   ├── ThemeProvider.tsx   # Dark mode theme provider
+│   ├── GoogleAnalytics.tsx # Analytics component
+│   ├── ReadingProgressBar.tsx  # Reading progress indicator
+│   ├── InfiniteScrollBlog.tsx  # Infinite scroll component
+│   └── AutoScrollNext.tsx  # Auto-scroll navigation
+├── content/                # Blog content (Markdown files)
+│   ├── blog/               # Individual blog posts
 │   │   └── [post-slug]/
-│   │       ├── index.md     # Post content with frontmatter
-│   │       └── *.png/jpg    # Post images
-│   └── assets/              # Shared assets
-├── lib/                     # Utility functions
-│   └── markdown.ts          # Markdown processing utilities
-├── types/                   # TypeScript type definitions
-│   └── blog.ts              # Blog post types
-├── public/                  # Static assets
-│   ├── staticwebapp.config.json  # Azure Static Web Apps config
-│   └── robots.txt           # SEO robots file
-├── next.config.js           # Next.js configuration
-├── tailwind.config.ts       # Tailwind CSS configuration
-├── tsconfig.json            # TypeScript configuration
-└── azure-pipelines.yaml     # Azure DevOps CI/CD pipeline
+│   │       ├── index.md    # Post content with frontmatter
+│   │       └── *.png/jpg   # Post images
+│   └── assets/             # Shared assets
+├── lib/                    # Utility functions
+│   └── markdown.ts         # Markdown processing utilities
+├── types/                  # TypeScript type definitions
+│   └── blog.ts             # Blog post types
+├── tests/                  # Playwright E2E tests
+│   ├── e2e/                # End-to-end test files
+│   ├── helpers/            # Test helper utilities
+│   └── *.md                # Testing documentation
+├── public/                 # Static assets
+│   └── robots.txt          # SEO robots file
+├── next.config.js          # Next.js configuration
+├── tailwind.config.ts      # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── playwright.config.ts    # Playwright test configuration
+└── eslint.config.mjs       # ESLint configuration (flat config)
 ```
 
 ## ✍️ Creating a Blog Post
@@ -145,7 +199,7 @@ title: "My New Post Title"
 date: "2026-01-19"
 categories: ["Sitecore", "Development"]
 tags: ["next.js", "typescript", "tutorial"]
-coverImage: "./cover.png"
+img: ./cover.jpg
 ---
 
 Your post content goes here...
@@ -156,19 +210,22 @@ Your post content goes here...
 ![Alt text](./image.png)
 ```
 
+### Frontmatter Fields
+
+- **title** (required): Post title
+- **date** (required): Publication date in YYYY-MM-DD format
+- **categories** (required): Array of category names
+- **tags** (optional): Array of tag names for filtering
+- **img** (optional): Path to cover image (relative to post folder)
+
 ## 🎨 Customization
 
 ### Theme Colors
-Edit `tailwind.config.ts` to customize the color scheme:
-```typescript
-colors: {
-  primary: {
-    // Your custom colors
-  }
-}
-```
+
+Edit `tailwind.config.ts` to customize the color scheme. The blog includes dark mode support with custom color definitions.
 
 ### Site Metadata
+
 Update metadata in `app/layout.tsx`:
 ```typescript
 export const metadata: Metadata = {
@@ -178,44 +235,40 @@ export const metadata: Metadata = {
 }
 ```
 
-## 🚢 Deployment
+### Google Analytics
 
-### Azure Static Web Apps
-
-This blog is configured for deployment to Azure Static Web Apps:
-
-1. The `staticwebapp.config.json` file contains routing and header configurations
-2. The `azure-pipelines.yaml` file provides CI/CD pipeline setup
-3. Use Node.js 22 runtime as specified in the configuration
-
-### Other Platforms
-
-The app uses `output: 'standalone'` mode, making it compatible with:
-- Vercel
-- Netlify
-- Docker containers
-- Traditional Node.js hosting
+Configure Google Analytics by setting the tracking ID in the `GoogleAnalytics` component in `components/GoogleAnalytics.tsx`.
 
 ## 🧰 Technologies Used
 
-### Core
-- [Next.js 14](https://nextjs.org/) - React framework
-- [React 18](https://react.dev/) - UI library
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
+### Core Framework
+- [Next.js 16](https://nextjs.org/) - React framework with App Router
+- [React 19](https://react.dev/) - UI library
+- [TypeScript 5.7](https://www.typescriptlang.org/) - Type safety
 
-### Styling
-- [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS
-- [@tailwindcss/typography](https://github.com/tailwindcss/typography) - Prose styling
+### Styling & UI
+- [Tailwind CSS 3.4](https://tailwindcss.com/) - Utility-first CSS framework
+- [@tailwindcss/typography](https://github.com/tailwindcss/typography) - Beautiful typographic defaults for prose content
+- [Heroicons](https://heroicons.com/) - Beautiful hand-crafted SVG icons
 
-### Content & Markdown
-- [gray-matter](https://github.com/jonschlinkert/gray-matter) - Frontmatter parsing
-- [marked](https://marked.js.org/) - Markdown parsing
-- [Prism.js](https://prismjs.com/) - Syntax highlighting
+### Content Processing
+- [gray-matter](https://github.com/jonschlinkert/gray-matter) - Parse frontmatter from Markdown files
+- [marked](https://marked.js.org/) - Fast Markdown parser and compiler
+- [Prism.js](https://prismjs.com/) - Lightweight syntax highlighting
 
 ### Utilities
-- [date-fns](https://date-fns.org/) - Date manipulation
-- [Sharp](https://sharp.pixelplumbing.com/) - Image optimization
-- [Heroicons](https://heroicons.com/) - SVG icons
+- [date-fns](https://date-fns.org/) - Modern JavaScript date utility library
+- [Sharp](https://sharp.pixelplumbing.com/) - High-performance image processing
+
+### Testing
+- [Playwright](https://playwright.dev/) - End-to-end testing framework
+- [@axe-core/playwright](https://github.com/dequelabs/axe-core-npm) - Accessibility testing
+
+### Development Tools
+- [ESLint](https://eslint.org/) - JavaScript/TypeScript linting (flat config)
+- [TypeScript](https://www.typescriptlang.org/) - Static type checking
+- [PostCSS](https://postcss.org/) - CSS transformation
+- [Autoprefixer](https://github.com/postcss/autoprefixer) - CSS vendor prefixing
 
 ## 👤 Author
 
@@ -231,14 +284,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-
-## 📊 Build Status
-
-The project includes Azure DevOps pipeline configuration for:
-- Dependency installation
-- Code linting
-- Type checking
-- Production builds
 
 ---
 
