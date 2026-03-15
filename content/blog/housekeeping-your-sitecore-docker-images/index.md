@@ -7,7 +7,6 @@ tags:
   - "sitecore"
   - "xmc"
   - "xm cloud"
-  - "sitecore ai"
   - "docker"
   - "images"
   - "housekeeping"
@@ -19,7 +18,7 @@ From time to time, updates are released for the Sitecore XM Cloud base images du
 
 ## Script for housekeeping
 
-To ensure proper housekeeping, you might want to run the following script every once in a while week to cleanup your images.
+To ensure proper housekeeping, you might want to run the following script every once in a while to cleanup your images.
 
 > **Warning:** Make sure to stop all running containers before executing this script, as it will forcibly remove **all** images whose repository name contains "sitecore" or "xmcloud" — including any images that are currently in use. Run `docker-compose down` (or your project's equivalent down script) before proceeding.
 
@@ -56,6 +55,6 @@ This command removes the image based on the ID of the image. It is important to 
 
 ## Conclusion
 
-> **Warning:** This script will remove ANY image with a name matching the filter.
-
 By performing regular housekeeping, you not only free up disk space but also ensure that your images remain up-to-date. This is crucial for the security and performance of your development environment. Consider making this process a part of your maintenance routine.
+
+> **Warning:** This script will remove ANY image with a name matching the filter.
