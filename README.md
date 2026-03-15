@@ -29,7 +29,7 @@ A modern, high-performance blog built with Next.js 16, React 19, TypeScript, and
 ## 📋 Prerequisites
 
 - **Node.js**: >= 22.0.0
-- **npm**: >= 10.0.0
+- **pnpm**: >= 9.0.0
 
 ## 🛠️ Installation
 
@@ -41,7 +41,7 @@ cd blog
 
 2. Install dependencies:
 ```bash
-npm install
+pnpm install
 ```
 
 ## ☁️ GitHub Codespaces
@@ -55,7 +55,7 @@ This repository is configured for GitHub Codespaces, providing a complete develo
 1. Click the "Open in GitHub Codespaces" badge above or create a new codespace from the repository
 2. Wait for the environment to build (first time setup takes ~2-3 minutes)
 3. Once ready, the dependencies are automatically installed
-4. Start developing immediately with `npm run dev`
+4. Start developing immediately with `pnpm dev`
 
 ### What's Included
 
@@ -74,30 +74,30 @@ All configurations are in [`.devcontainer/`](.devcontainer/) directory.
 
 Start the development server with Turbopack (faster):
 ```bash
-npm run dev
+pnpm dev
 ```
 
 Or use Webpack:
 ```bash
-npm run dev:webpack
+pnpm dev:webpack
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to view the blog.
 
 ### Production Build
 ```bash
-npm run build
-npm start
+pnpm build
+pnpm start
 ```
 
 ### Type Checking
 ```bash
-npm run type-check
+pnpm type-check
 ```
 
 ### Linting
 ```bash
-npm run lint
+pnpm lint
 ```
 
 ## 🧪 Testing
@@ -106,29 +106,29 @@ This project uses Playwright for end-to-end testing with comprehensive anti-flak
 
 ### Run All Tests
 ```bash
-npm test
+pnpm test
 ```
 
 ### Run Tests with UI Mode
 ```bash
-npm run test:ui
+pnpm test:ui
 ```
 
 ### Run Tests in Specific Browser
 ```bash
-npm run test:chromium
-npm run test:firefox
-npm run test:webkit
+pnpm test:chromium
+pnpm test:firefox
+pnpm test:webkit
 ```
 
 ### Run Mobile Tests
 ```bash
-npm run test:mobile
+pnpm test:mobile
 ```
 
 ### Run Tests with Retries (CI-like)
 ```bash
-npm run test:stable
+pnpm test:stable
 ```
 
 ### Additional Testing Resources
