@@ -1,12 +1,13 @@
 ---
 title: "Housekeeping Your Sitecore Docker Images"
-date: "2026-03-04"
+date: "2026-03-15"
 categories: 
   - "sitecore"
 tags: 
   - "sitecore"
   - "xmc"
   - "xm cloud"
+  - "sitecore ai"
   - "docker"
   - "images"
   - "housekeeping"
@@ -18,12 +19,23 @@ From time to time, updates are released for the Sitecore XM Cloud base images du
 
 ## Script for housekeeping
 
-To ensure proper housekeeping, you might want to run the following script every other week to remove old images.
+To ensure proper housekeeping, you might want to run the following script every once in a while week to cleanup your images.
 
 > **Warning:** Make sure to stop all running containers before executing this script, as it will forcibly remove **all** images whose repository name contains "sitecore" or "xmcloud" — including any images that are currently in use. Run `docker-compose down` (or your project's equivalent down script) before proceeding.
 
+If you happen to use some custom naming yourself you might want to use a different match pattern instead of `sitecore|xmcloud`.
+
 ```powershell
-docker system prune -f; docker image ls --format json | ConvertFrom-Json | ForEach-Object { if ($_.Repository -match "sitecore|xmcloud") { Write-Host "Forcibly removing $($_.Repository) by ID" -ForegroundColor Yellow; docker rmi $_.ID -f } }
+docker system prune -f
+
+docker image ls --format json | 
+    ConvertFrom-Json | 
+    ForEach-Object { 
+        if ($_.Repository -match "sitecore|xmcloud") { 
+            Write-Host "Forcibly removing $($_.Repository) by ID" -ForegroundColor Yellow
+            docker rmi $_.ID -f 
+        } 
+    }
 ```
 
 ## docker system prune -f
@@ -44,4 +56,6 @@ This command removes the image based on the ID of the image. It is important to 
 
 ## Conclusion
 
-By performing regular housekeeping, you not only free up disk space but also ensure that your images remain up-to-date. This is crucial for the security and performance of your development environment. Make sure to incorporate this maintenance process into your routine!
+> **Warning:** This script will remove ANY image with a name matching the filter.
+
+By performing regular housekeeping, you not only free up disk space but also ensure that your images remain up-to-date. This is crucial for the security and performance of your development environment. Consider making this process a part of your maintenance routine.
