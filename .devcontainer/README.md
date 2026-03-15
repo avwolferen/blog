@@ -34,16 +34,16 @@ Once the codespace is ready:
 
 ```bash
 # Start the development server
-npm run dev
+pnpm dev
 
 # Run tests
-npm test
+pnpm test
 
 # Run tests in UI mode
-npm run test:ui
+pnpm test:ui
 
 # Build the project
-npm run build
+pnpm build
 ```
 
 ## Port Forwarding
