@@ -14,7 +14,7 @@ A modern, high-performance blog built with Next.js 16, React 19, TypeScript, and
 
 - **Modern Tech Stack**: Built with Next.js 16 (App Router), React 19, and TypeScript 5.7
 - **Markdown-Based Content**: Write blog posts in Markdown with frontmatter metadata
-- **Dark Mode Support**: Automatic dark/light theme switching with system preference detection
+- **Theme Support**: Light, dark, and christmas theme switching with system preference detection
 - **Optimized Images**: Next.js Image optimization with AVIF and WebP support
 - **Responsive Design**: Mobile-first design with Tailwind CSS and responsive typography
 - **Reading Progress Bar**: Visual indicator of reading progress on blog posts
@@ -157,7 +157,7 @@ blog/
 ├── components/             # React components
 │   ├── Header.tsx          # Site header with navigation
 │   ├── Footer.tsx          # Site footer
-│   ├── ThemeProvider.tsx   # Dark mode theme provider
+│   ├── ThemeProvider.tsx   # Light/dark/christmas theme provider
 │   ├── GoogleAnalytics.tsx # Analytics component
 │   ├── ReadingProgressBar.tsx  # Reading progress indicator
 │   ├── InfiniteScrollBlog.tsx  # Infinite scroll component
@@ -222,7 +222,7 @@ Your post content goes here...
 
 ### Theme Colors
 
-Edit `tailwind.config.ts` to customize the color scheme. The blog includes dark mode support with custom color definitions.
+Edit `tailwind.config.ts` to customize the color scheme. The blog includes light, dark, and christmas themes with custom color definitions.
 
 ### Site Metadata
 

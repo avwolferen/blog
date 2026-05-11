@@ -10,6 +10,26 @@
   body {
     @apply antialiased;
   }
+
+  html.christmas body {
+    @apply bg-red-50 text-red-950;
+  }
+
+  html.christmas a {
+    @apply text-green-700;
+  }
+
+  html.christmas a:hover {
+    @apply text-red-700;
+  }
+
+  html.christmas header {
+    @apply border-red-200 bg-red-100/80;
+  }
+
+  html.christmas footer {
+    @apply border-green-200 bg-green-50;
+  }
 }
 
 /* Prism.js theme override for dark mode */
