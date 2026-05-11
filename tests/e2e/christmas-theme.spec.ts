@@ -8,9 +8,8 @@ test.describe('Christmas Theme', () => {
     const themeToggle = page.getByRole('button', { name: 'Switch theme' });
 
     await themeToggle.click();
-    await page.waitForTimeout(300);
+    await expect(html).toHaveClass(/dark/);
     await themeToggle.click();
-    await page.waitForTimeout(300);
 
     await expect(html).toHaveClass(/christmas/);
 
