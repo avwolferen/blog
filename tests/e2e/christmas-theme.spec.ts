@@ -25,7 +25,6 @@ test.describe('Christmas Theme', () => {
     });
 
     await page.reload();
-    await page.waitForLoadState('networkidle');
 
     await expect(page.locator('html')).toHaveClass(/christmas/);
   });

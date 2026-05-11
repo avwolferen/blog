@@ -30,6 +30,17 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const isTheme = (value: string | null): value is Theme =>
     value === 'light' || value === 'dark' || value === 'christmas';
 
+  const getNextTheme = (currentTheme: Theme): Theme => {
+    switch (currentTheme) {
+      case 'light':
+        return 'dark';
+      case 'dark':
+        return 'christmas';
+      default:
+        return 'light';
+    }
+  };
+
   useEffect(() => {
     setMounted(true);
     const storedThemeValue = localStorage.getItem('theme');
@@ -41,8 +52,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const toggleTheme = () => {
-    const newTheme =
-      theme === 'light' ? 'dark' : theme === 'dark' ? 'christmas' : 'light';
+    const newTheme = getNextTheme(theme);
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
     applyTheme(newTheme);
