@@ -32,7 +32,11 @@ export default function Header() {
             </Link>
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+              className={`p-2 rounded-lg transition-colors ${
+                theme === 'christmas'
+                  ? 'bg-red-100 hover:bg-red-200'
+                  : 'bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700'
+              }`}
               aria-label="Switch theme"
             >
               {theme === 'dark' ? (
