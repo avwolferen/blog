@@ -1,6 +1,6 @@
 ---
 title: "How to fix issues after accidentally cleaning up stuff in your windowsfilter"
-date: "2026-03-04"
+date: "2026-05-15"
 categories: 
   - "sitecore"
 tags: 
@@ -38,7 +38,7 @@ failed to write digest data: invalid output path: CreateFile C:\ProgramData\Dock
 It is rather curious to see that Docker actually did create the directories for layerdb and distribution, but it lacked in scaffolding the imagedb directory. I just created it manually in my trusty cmd prompt.
 
 ```
-mkdir imagedb && cd imagedb && mkdir content && cd content && mkdir sha256 && cd ..\..\
+mkdir "C:\ProgramData\Docker\image\windowsfilter\imagedb\content\sha256"
 ```
 
 After this I was happily building my images again.
