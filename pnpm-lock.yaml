@@ -18,8 +18,8 @@ importers:
         specifier: ^4.0.3
         version: 4.0.3
       marked:
-        specifier: ^17.0.0
-        version: 17.0.1
+        specifier: ^18.0.3
+        version: 18.0.3
       next:
         specifier: ^16.2.6
         version: 16.2.6(@babel/core@7.29.0)(@playwright/test@1.60.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
@@ -1525,8 +1525,8 @@ packages:
   lru-cache@5.1.1:
     resolution: {integrity: sha512-KpNARQA3Iwv+jTA0utUVVbrh+Jlrr1Fv0e56GGzAFOXN7dk/FviaDW8LHmK52DlcH4WP2n6gI8vN1aesBFgo9w==}
 
-  marked@17.0.1:
-    resolution: {integrity: sha512-boeBdiS0ghpWcSwoNm/jJBwdpFaMnZWRzjA6SkUMYb40SVaN1x7mmfGKp0jvexGcx+7y2La5zRZsYFZI6Qpypg==}
+  marked@18.0.3:
+    resolution: {integrity: sha512-7VT90JOkDeaRWpfjOReRGPEKn0ecdARBkDGL+tT1wZY0efPPqkUxLUSmzy/C7TIylQYJC9STISEsCHrqb/7VIA==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -3732,7 +3732,7 @@ snapshots:
     dependencies:
       yallist: 3.1.1
 
-  marked@17.0.1: {}
+  marked@18.0.3: {}
 
   math-intrinsics@1.1.0: {}
 
