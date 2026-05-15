@@ -16,14 +16,14 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 
 ## Build Commands
 
-- `npm run dev` - Start development server with Turbopack
-- `npm run build` - Build production bundle
-- `npm start` - Start production server
-- `npm run lint` - Run ESLint
-- `npm run type-check` - Run TypeScript type checking
-- `npm test` - Run Playwright tests
-- `npm run test:ui` - Run Playwright tests with UI mode
-- `npm run test:stable` - Run tests with retries for CI stability
+- `pnpm dev` - Start development server with Turbopack
+- `pnpm build` - Build production bundle
+- `pnpm start` - Start production server
+- `pnpm lint` - Run ESLint
+- `pnpm type-check` - Run TypeScript type checking
+- `pnpm test` - Run Playwright tests
+- `pnpm test:ui` - Run Playwright tests with UI mode
+- `pnpm test:stable` - Run tests with retries for CI stability
 
 ## Code Style
 
@@ -87,7 +87,7 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 ### DO
 - Follow existing code patterns and conventions
 - Use TypeScript types consistently
-- Test changes with `npm run lint` and `npm run type-check`
+- Test changes with `pnpm lint` and `pnpm type-check`
 - Verify responsive design and dark mode support
 - Keep components pure and side-effect-free where possible
 - Use Next.js Image component for images
@@ -108,7 +108,7 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 - Prefer built-in Next.js/React features
 - Check compatibility with Node.js 22+ and React 19
 - Update `package.json` with specific versions
-- Run `npm install` after adding dependencies
+- Run `pnpm install` after adding dependencies
 
 ## Deployment
 
