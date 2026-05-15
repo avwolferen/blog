@@ -9,7 +9,7 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/:slug((?!blog|archive|tags|api|_next|content).+)',
+        source: '/:slug((?!blog|archive|tags|api|_next|content|favicon\\.ico|robots\\.txt|sitemap\\.xml).+)',
         destination: '/blog/:slug',
         permanent: true,
       },
