@@ -13,6 +13,11 @@ export const metadata: Metadata = {
     default: 'Just another blog about Sitecore, tips and tricks',
     template: '%s | Alex van Wolferen',
   },
+  icons: {
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/favicon.ico',
+  },
   description:
     'I am a Sitecore Architect. Father of Luuk and Fenna, fiancé of Marloes, hoarder of electronics. Loves to learn something new every single day.',
   authors: [{ name: 'Alex van Wolferen', url: 'https://www.alexvanwolferen.nl' }],
