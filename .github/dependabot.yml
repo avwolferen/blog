@@ -1,9 +1,15 @@
-# This file configures Dependabot for GitHub Actions ecosystem
+# This file configures Dependabot for GitHub Actions and npm ecosystems
 version: 2
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"  # Location of package manifests
     schedule:
-      interval: "weekly"
+      interval: "daily"
+    commit-message:
+      prefix: "fix"
+  - package-ecosystem: "npm"
+    directory: "/"  # Location of package manifests
+    schedule:
+      interval: "daily"
     commit-message:
       prefix: "fix"
