@@ -17,19 +17,19 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
 
     - name: Install Safe Chain
       run: |
         curl -fsSL https://github.com/AikidoSec/safe-chain/releases/latest/download/install-safe-chain.sh | sh -s -- --ci
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
         node-version: '24.x'
 
     - name: Install pnpm
-      uses: pnpm/action-setup@v4
+      uses: pnpm/action-setup@v6
       with:
         run_install: false
 
@@ -38,7 +38,7 @@ jobs:
       run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
 
     - name: Cache pnpm dependencies
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: ${{ env.STORE_PATH }}
         key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
@@ -46,7 +46,7 @@ jobs:
           ${{ runner.os }}-pnpm-store-
 
     - name: Cache Next.js build
-      uses: actions/cache@v4
+      uses: actions/cache@v5
       with:
         path: |
           .next/cache
@@ -68,7 +68,7 @@ jobs:
       run: pnpm run build
 
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       if: success()
       with:
         name: nextjs-build
