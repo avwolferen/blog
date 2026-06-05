@@ -107,9 +107,9 @@ The application sets strict response headers in `next.config.js` for all routes:
 - `Content-Security-Policy`
 - `X-Frame-Options: DENY`
 - `Referrer-Policy: strict-origin-when-cross-origin`
-- `Permissions-Policy` with powerful features disabled (for example: `camera=()`, `microphone=()`, `geolocation=()`, `payment=()`, `publickey-credentials-get=()`).
+- `Permissions-Policy` with powerful features disabled (e.g. `camera=()`, `microphone=()`, `geolocation=()`, `payment=()`, `publickey-credentials-get=()`).
 
-For this static blog, these features are not required, so disabling them reduces attack surface and limits unnecessary browser capability exposure. If future functionality needs one of these APIs (for example embedded capture tools or passkeys), explicitly update the header and tests together.
+For this static blog, these features are not required, so disabling them reduces attack surface and limits unnecessary browser capability exposure. If future functionality needs one of these APIs (e.g. embedded capture tools or passkeys), explicitly update the header and tests together.
 
 ## 🧪 Testing
 
