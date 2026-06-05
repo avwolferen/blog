@@ -10,7 +10,12 @@ test.describe('Tag Filter Page', () => {
     
     const firstTagLink = page.locator('a[href^="/tags/"]').first();
     const href = await firstTagLink.getAttribute('href');
-    firstTag = decodeURIComponent(href?.replace('/tags/', '') || '');
+    const rawTag = href?.replace('/tags/', '') || '';
+    try {
+      firstTag = decodeURIComponent(rawTag);
+    } catch {
+      firstTag = rawTag;
+    }
     
     await page.goto(`/tags/${encodeURIComponent(firstTag)}`);
     await page.waitForLoadState('networkidle');

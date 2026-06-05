@@ -52,7 +52,7 @@ test.describe('Tags Page', () => {
 
   test('should navigate correctly for tags with whitespace', async ({ page }) => {
     const whitespaceTags = page.locator('a[href^="/tags/"][href*="%20"]');
-    // This behavior is validated when fixture content includes at least one whitespace tag.
+    // This behavior is validated when test content includes at least one whitespace tag.
     test.skip(await whitespaceTags.count() === 0, 'No tags with whitespace available in test content');
     const whitespaceTagLink = whitespaceTags.first();
 
