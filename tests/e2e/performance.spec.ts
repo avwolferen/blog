@@ -136,6 +136,12 @@ test.describe('Performance', () => {
 
     const headers = response.headers();
     expect(headers['x-frame-options']).toBe('DENY');
+    expect(headers['permissions-policy']).toContain('camera=()');
+    expect(headers['permissions-policy']).toContain('microphone=()');
+    expect(headers['permissions-policy']).toContain('geolocation=()');
+    expect(headers['permissions-policy']).toContain('payment=()');
+    expect(headers['permissions-policy']).toContain('publickey-credentials-get=()');
+    expect(headers['permissions-policy']).toContain('browsing-topics=()');
     expect(headers['content-security-policy']).toContain("frame-ancestors 'none'");
     expect(headers['content-security-policy']).toContain("default-src 'self'");
     expect(headers['content-security-policy']).toContain("base-uri 'self'");
