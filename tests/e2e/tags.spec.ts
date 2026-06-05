@@ -45,20 +45,22 @@ test.describe('Tags Page', () => {
   });
 
   test('should navigate correctly for tags with whitespace', async ({ page }) => {
-    const whitespaceTagLink = page.locator('a[href^="/tags/"][href*="%20"]').first();
-    test.skip(await whitespaceTagLink.count() === 0, 'No tags with whitespace available in test content');
+    const whitespaceTags = page.locator('a[href^="/tags/"][href*="%20"]');
+    test.skip(await whitespaceTags.count() === 0, 'No tags with whitespace available in test content');
+    const whitespaceTagLink = whitespaceTags.first();
 
     await expect(whitespaceTagLink).toBeVisible();
     const href = await whitespaceTagLink.getAttribute('href');
+    expect(href).toBeTruthy();
     expect(href).toContain('%20');
 
     const tagName = (await whitespaceTagLink.textContent())?.replace(/\(\d+\)/, '').trim() || '';
     expect(tagName.length).toBeGreaterThan(0);
 
-    await page.goto(href || '');
+    await page.goto(href!);
     await page.waitForLoadState('networkidle');
 
-    expect(page.url()).toContain(href || '');
+    expect(page.url()).toContain(href!);
     await expect(page.getByRole('heading', { level: 1 })).toContainText(tagName);
   });
 
