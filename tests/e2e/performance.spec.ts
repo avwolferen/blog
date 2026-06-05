@@ -129,6 +129,16 @@ test.describe('Performance', () => {
     expect(headers).toBeTruthy();
   });
 
+  test('should send anti-clickjacking headers', async ({ page }) => {
+    const response = await page.goto('/');
+
+    expect(response?.status()).toBe(200);
+
+    const headers = response?.headers();
+    expect(headers?.['x-frame-options']).toBe('DENY');
+    expect(headers?.['content-security-policy']).toContain("frame-ancestors 'none'");
+  });
+
   test('should minimize render-blocking resources', async ({ page }) => {
     await page.goto('/');
     
