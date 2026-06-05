@@ -1,5 +1,7 @@
 import { test, expect } from '@playwright/test';
 
+const TAG_COUNT_REGEX = /\(\d+\)/;
+
 test.describe('Tags Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/tags');
@@ -54,7 +56,7 @@ test.describe('Tags Page', () => {
     expect(href).toBeTruthy();
     expect(href).toContain('%20');
 
-    const tagName = (await whitespaceTagLink.textContent())?.replace(/\(\d+\)/, '').trim() || '';
+    const tagName = (await whitespaceTagLink.textContent())?.replace(TAG_COUNT_REGEX, '').trim() || '';
     expect(tagName.length).toBeGreaterThan(0);
 
     await page.goto(href!);
