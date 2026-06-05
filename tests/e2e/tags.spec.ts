@@ -47,10 +47,10 @@ test.describe('Tags Page', () => {
   test('should navigate correctly for tags with whitespace', async ({ page }) => {
     const tagName = 'xm cloud';
     const encodedTag = encodeURIComponent(tagName);
-    const whitespaceTag = page.locator('a[href^="/tags/"]').filter({ hasText: tagName }).first();
+    const whitespaceTagLink = page.locator('a[href^="/tags/"]').filter({ hasText: tagName }).first();
 
-    await expect(whitespaceTag).toBeVisible();
-    await expect(whitespaceTag).toHaveAttribute('href', `/tags/${encodedTag}`);
+    await expect(whitespaceTagLink).toBeVisible();
+    await expect(whitespaceTagLink).toHaveAttribute('href', `/tags/${encodedTag}`);
     await page.goto(`/tags/${encodedTag}`);
     await page.waitForLoadState('networkidle');
 
