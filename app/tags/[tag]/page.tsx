@@ -6,6 +6,14 @@ import { notFound } from 'next/navigation';
 
 type Params = Promise<{ tag: string }>;
 
+function decodeTag(tag: string): string {
+  try {
+    return decodeURIComponent(tag);
+  } catch {
+    return tag;
+  }
+}
+
 export async function generateStaticParams() {
   const tags = getAllTags();
   return tags.map((tag) => ({
@@ -15,16 +23,18 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Params }) {
   const { tag } = await params;
+  const decodedTag = decodeTag(tag);
   return {
-    title: `Posts tagged with "${tag}"`,
-    description: `All blog posts tagged with ${tag}`,
+    title: `Posts tagged with "${decodedTag}"`,
+    description: `All blog posts tagged with ${decodedTag}`,
   };
 }
 
 export default async function TagPage({ params }: { params: Params }) {
   try {
     const { tag } = await params;
-    const posts = getPostsByTag(tag);
+    const decodedTag = decodeTag(tag);
+    const posts = getPostsByTag(decodedTag);
 
     if (posts.length === 0) {
       notFound();
@@ -40,7 +50,7 @@ export default async function TagPage({ params }: { params: Params }) {
             ← All Tags
           </Link>
           <h1 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
-            Posts tagged with &quot;{tag}&quot;
+            Posts tagged with &quot;{decodedTag}&quot;
           </h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">
             {posts.length} {posts.length === 1 ? 'post' : 'posts'} found

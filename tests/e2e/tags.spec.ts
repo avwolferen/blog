@@ -44,6 +44,20 @@ test.describe('Tags Page', () => {
     expect(page.url()).not.toBe('http://localhost:3000/tags');
   });
 
+  test('should navigate correctly for tags with whitespace', async ({ page }) => {
+    const tagName = 'xm cloud';
+    const encodedTag = encodeURIComponent(tagName);
+    const whitespaceTag = page.locator('a[href^="/tags/"]').filter({ hasText: tagName }).first();
+
+    await expect(whitespaceTag).toBeVisible();
+    await expect(whitespaceTag).toHaveAttribute('href', `/tags/${encodedTag}`);
+    await page.goto(`/tags/${encodedTag}`);
+    await page.waitForLoadState('networkidle');
+
+    expect(page.url()).toContain(`/tags/${encodedTag}`);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(tagName);
+  });
+
   test('should display tag names clearly', async ({ page }) => {
     const tags = page.locator('a[href^="/tags/"]');
     const firstTag = tags.first();
