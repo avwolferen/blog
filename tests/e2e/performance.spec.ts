@@ -156,6 +156,16 @@ test.describe('Performance', () => {
     );
   });
 
+  test('should send strict referrer policy on all responses', async ({ page }) => {
+    const routes = ['/', '/archive', '/tags', '/this-route-does-not-exist'];
+
+    for (const route of routes) {
+      const response = await page.request.get(route);
+
+      expect(response.headers()['referrer-policy']).toBe('strict-origin-when-cross-origin');
+    }
+  });
+
   test('should minimize render-blocking resources', async ({ page }) => {
     await page.goto('/');
     

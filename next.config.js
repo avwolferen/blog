@@ -38,6 +38,10 @@ const nextConfig = {
             value: 'DENY',
           },
           {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
             key: 'Content-Security-Policy',
             value: contentSecurityPolicy,
           },
