@@ -21,7 +21,7 @@ export default function TagsPage() {
           return (
             <Link
               key={tag}
-              href={`/tags/${tag}`}
+              href={`/tags/${encodeURIComponent(tag)}`}
               className="group inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-primary-100 dark:hover:bg-primary-900 transition-colors"
             >
               <span className="text-gray-900 dark:text-gray-100 font-medium group-hover:text-primary-600 dark:group-hover:text-primary-400">

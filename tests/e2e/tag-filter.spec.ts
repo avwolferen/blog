@@ -10,14 +10,19 @@ test.describe('Tag Filter Page', () => {
     
     const firstTagLink = page.locator('a[href^="/tags/"]').first();
     const href = await firstTagLink.getAttribute('href');
-    firstTag = href?.replace('/tags/', '') || '';
+    const rawTag = href?.replace('/tags/', '') || '';
+    try {
+      firstTag = decodeURIComponent(rawTag);
+    } catch {
+      firstTag = rawTag;
+    }
     
-    await page.goto(`/tags/${firstTag}`);
+    await page.goto(`/tags/${encodeURIComponent(firstTag)}`);
     await page.waitForLoadState('networkidle');
   });
 
   test('should load tag filter page successfully', async ({ page }) => {
-    expect(page.url()).toContain(`/tags/${firstTag}`);
+    expect(page.url()).toContain(`/tags/${encodeURIComponent(firstTag)}`);
   });
 
   test('should display tag name in heading', async ({ page }) => {
@@ -127,7 +132,7 @@ test.describe('Tag Filter Page', () => {
   test('should allow navigation to other tags', async ({ page }) => {
     // Find a different tag on one of the posts
     const otherTagLink = page.locator('article a[href^="/tags/"]')
-      .filter({ hasNot: page.locator(`[href="/tags/${firstTag}"]`) })
+      .filter({ hasNot: page.locator(`[href="/tags/${encodeURIComponent(firstTag)}"]`) })
       .first();
     
     if (await otherTagLink.count() > 0) {
@@ -219,7 +224,7 @@ test.describe('Tag Filter Page', () => {
       }
     });
     
-    await page.goto(`/tags/${firstTag}`);
+    await page.goto(`/tags/${encodeURIComponent(firstTag)}`);
     await page.waitForLoadState('networkidle');
     
     const realErrors = errors.filter(err => 
