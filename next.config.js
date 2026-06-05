@@ -30,6 +30,25 @@ const nextConfig = {
       "img-src 'self' data: blob: https://www.google-analytics.com",
       "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
     ].join('; ');
+    const permissionsPolicy = [
+      'accelerometer=()',
+      'autoplay=()',
+      'browsing-topics=()',
+      'camera=()',
+      'display-capture=()',
+      'encrypted-media=()',
+      'geolocation=()',
+      'gyroscope=()',
+      'magnetometer=()',
+      'microphone=()',
+      'midi=()',
+      'payment=()',
+      'publickey-credentials-get=()',
+      'screen-wake-lock=()',
+      'serial=()',
+      'usb=()',
+      'xr-spatial-tracking=()',
+    ].join(', ');
 
     return [
       {
@@ -46,6 +65,10 @@ const nextConfig = {
           {
             key: 'Content-Security-Policy',
             value: contentSecurityPolicy,
+          },
+          {
+            key: 'Permissions-Policy',
+            value: permissionsPolicy,
           },
         ],
       },
