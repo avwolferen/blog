@@ -100,6 +100,17 @@ pnpm type-check
 pnpm lint
 ```
 
+## 🔐 Security Headers
+
+The application sets strict response headers in `next.config.js` for all routes:
+
+- `Content-Security-Policy`
+- `X-Frame-Options: DENY`
+- `Referrer-Policy: strict-origin-when-cross-origin`
+- `Permissions-Policy` with powerful features disabled (e.g. `camera=()`, `microphone=()`, `geolocation=()`, `payment=()`, `publickey-credentials-get=()`).
+
+For this static blog, these features are not required, so disabling them reduces attack surface and limits unnecessary browser capability exposure. If future functionality needs one of these APIs (e.g. embedded capture tools or passkeys), explicitly update the header and tests together.
+
 ## 🧪 Testing
 
 This project uses Playwright for end-to-end testing with comprehensive anti-flakiness patterns.
@@ -238,6 +249,18 @@ export const metadata: Metadata = {
 ### Google Analytics
 
 Configure Google Analytics by setting the tracking ID in the `GoogleAnalytics` component in `components/GoogleAnalytics.tsx`.
+Analytics loading is gated by explicit user consent via `components/AnalyticsConsent.tsx`.
+
+### Content Security Policy (`script-src`) note
+
+`script-src` currently keeps `'unsafe-inline'`.
+
+We tested removing `'unsafe-inline'` and observed breakage:
+- browser CSP errors for blocked inline scripts (`Executing inline script violates ... script-src`)
+- runtime/hydration failures (for example: `Expected a request ID to be defined for the document via self.__next_r`)
+- consent banner interaction tests failing as a side effect of blocked runtime scripts
+
+For now, `'unsafe-inline'` is retained for compatibility with Next.js App Router runtime scripts. A stronger follow-up mitigation is to migrate to a nonce-based CSP (and pass nonces to all framework and analytics scripts) so `script-src` can be tightened without breaking functionality.
 
 ## 🧰 Technologies Used
 

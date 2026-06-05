@@ -15,6 +15,65 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    const contentSecurityPolicy = [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'",
+      "object-src 'none'",
+      // Keep 'unsafe-inline': Next.js App Router currently emits inline runtime scripts.
+      // Removing it causes CSP violations and hydration/runtime failures (see README CSP notes).
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+      "font-src 'self' https://fonts.gstatic.com",
+      "img-src 'self' data: blob: https://www.google-analytics.com",
+      "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
+    ].join('; ');
+    const permissionsPolicy = [
+      'accelerometer=()',
+      'autoplay=()',
+      'browsing-topics=()',
+      'camera=()',
+      'display-capture=()',
+      'encrypted-media=()',
+      'geolocation=()',
+      'gyroscope=()',
+      'magnetometer=()',
+      'microphone=()',
+      'midi=()',
+      'payment=()',
+      'publickey-credentials-get=()',
+      'screen-wake-lock=()',
+      'serial=()',
+      'usb=()',
+      'xr-spatial-tracking=()',
+    ].join(', ');
+
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Content-Security-Policy',
+            value: contentSecurityPolicy,
+          },
+          {
+            key: 'Permissions-Policy',
+            value: permissionsPolicy,
+          },
+        ],
+      },
+    ];
+  },
   // Next.js 16: Turbopack configuration for markdown files
   turbopack: {
     rules: {
