@@ -10,6 +10,7 @@ function decodeTag(tag: string): string {
   try {
     return decodeURIComponent(tag);
   } catch {
+    // Fall back to the original value so malformed URLs naturally resolve to notFound().
     return tag;
   }
 }
