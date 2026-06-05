@@ -240,6 +240,17 @@ export const metadata: Metadata = {
 Configure Google Analytics by setting the tracking ID in the `GoogleAnalytics` component in `components/GoogleAnalytics.tsx`.
 Analytics loading is gated by explicit user consent via `components/AnalyticsConsent.tsx`.
 
+### Content Security Policy (`script-src`) note
+
+`script-src` currently keeps `'unsafe-inline'`.
+
+We tested removing `'unsafe-inline'` and observed breakage:
+- browser CSP errors for blocked inline scripts (`Executing inline script violates ... script-src`)
+- runtime/hydration failures (for example: `Expected a request ID to be defined for the document via self.__next_r`)
+- consent banner interaction tests failing as a side effect of blocked runtime scripts
+
+For now, `'unsafe-inline'` is retained for compatibility with Next.js App Router runtime scripts. A stronger follow-up mitigation is to migrate to a nonce-based CSP (and pass nonces to all framework and analytics scripts) so `script-src` can be tightened without breaking functionality.
+
 ## 🧰 Technologies Used
 
 ### Core Framework
