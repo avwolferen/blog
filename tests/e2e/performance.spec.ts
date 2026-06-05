@@ -130,13 +130,17 @@ test.describe('Performance', () => {
   });
 
   test('should send anti-clickjacking headers', async ({ page }) => {
-    const response = await page.goto('/');
+    const response = await page.request.get('/');
 
-    expect(response?.status()).toBe(200);
+    expect(response.status()).toBe(200);
 
-    const headers = response?.headers();
-    expect(headers?.['x-frame-options']).toBe('DENY');
-    expect(headers?.['content-security-policy']).toContain("frame-ancestors 'none'");
+    const headers = response.headers();
+    expect(headers['x-frame-options']).toBe('DENY');
+    expect(headers['content-security-policy']).toContain("frame-ancestors 'none'");
+    expect(headers['content-security-policy']).toContain("default-src 'self'");
+    expect(headers['content-security-policy']).toContain(
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com"
+    );
   });
 
   test('should minimize render-blocking resources', async ({ page }) => {
