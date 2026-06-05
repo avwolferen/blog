@@ -2,6 +2,10 @@ import { test, expect } from '@playwright/test';
 
 const TAG_COUNT_REGEX = /\(\d+\)/;
 
+function extractTagName(tagText: string | null): string {
+  return tagText?.replace(TAG_COUNT_REGEX, '').trim() || '';
+}
+
 test.describe('Tags Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/tags');
@@ -57,7 +61,7 @@ test.describe('Tags Page', () => {
     expect(href).toBeTruthy();
     expect(href).toContain('%20');
 
-    const tagName = (await whitespaceTagLink.textContent())?.replace(TAG_COUNT_REGEX, '').trim() || '';
+    const tagName = extractTagName(await whitespaceTagLink.textContent());
     expect(tagName.length).toBeGreaterThan(0);
 
     await page.goto(href!);
@@ -72,7 +76,7 @@ test.describe('Tags Page', () => {
     const firstTag = tags.first();
     
     const tagText = await firstTag.textContent();
-    const tagName = tagText?.replace(/\(\d+\)/, '').trim();
+    const tagName = extractTagName(tagText);
     
     expect(tagName?.length).toBeGreaterThan(0);
   });
