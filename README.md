@@ -238,6 +238,7 @@ export const metadata: Metadata = {
 ### Google Analytics
 
 Configure Google Analytics by setting the tracking ID in the `GoogleAnalytics` component in `components/GoogleAnalytics.tsx`.
+Analytics loading is gated by explicit user consent via `components/AnalyticsConsent.tsx`.
 
 ## 🧰 Technologies Used
 
