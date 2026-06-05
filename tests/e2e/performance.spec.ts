@@ -130,13 +130,30 @@ test.describe('Performance', () => {
   });
 
   test('should send anti-clickjacking headers', async ({ page }) => {
-    const response = await page.goto('/');
+    const response = await page.request.get('/');
 
-    expect(response?.status()).toBe(200);
+    expect(response.status()).toBe(200);
 
-    const headers = response?.headers();
-    expect(headers?.['x-frame-options']).toBe('DENY');
-    expect(headers?.['content-security-policy']).toContain("frame-ancestors 'none'");
+    const headers = response.headers();
+    expect(headers['x-frame-options']).toBe('DENY');
+    expect(headers['content-security-policy']).toContain("frame-ancestors 'none'");
+    expect(headers['content-security-policy']).toContain("default-src 'self'");
+    expect(headers['content-security-policy']).toContain("base-uri 'self'");
+    expect(headers['content-security-policy']).toContain("form-action 'self'");
+    expect(headers['content-security-policy']).toContain("object-src 'none'");
+    expect(headers['content-security-policy']).toContain(
+      "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com"
+    );
+    expect(headers['content-security-policy']).toContain(
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com"
+    );
+    expect(headers['content-security-policy']).toContain("font-src 'self' https://fonts.gstatic.com");
+    expect(headers['content-security-policy']).toContain(
+      "img-src 'self' data: blob: https://www.google-analytics.com"
+    );
+    expect(headers['content-security-policy']).toContain(
+      "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com"
+    );
   });
 
   test('should minimize render-blocking resources', async ({ page }) => {
