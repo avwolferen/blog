@@ -47,7 +47,7 @@
     "@next/eslint-plugin-next": "^16.2.12",
     "@playwright/test": "^1.60.0",
     "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^25.9.1",
+    "@types/node": "^26.1.2",
     "@types/prismjs": "^1.26.6",
     "@types/react": "^19.2.15",
     "@types/react-dom": "^19.0.0",
@@ -57,8 +57,8 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^7.1.1",
     "postcss": "^8.5.18",
-    "tailwindcss": "^3.4.17",
-    "typescript": "^6.0.3",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
     "typescript-eslint": "^8.60.0"
   }
 }
