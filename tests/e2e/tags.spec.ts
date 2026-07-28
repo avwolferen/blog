@@ -1,5 +1,11 @@
 import { test, expect } from '@playwright/test';
 
+const TAG_COUNT_REGEX = /\(\d+\)/;
+
+function extractTagName(tagText: string | null): string {
+  return tagText?.replace(TAG_COUNT_REGEX, '').trim() || '';
+}
+
 test.describe('Tags Page', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/tags');
@@ -44,12 +50,33 @@ test.describe('Tags Page', () => {
     expect(page.url()).not.toBe('http://localhost:3000/tags');
   });
 
+  test('should navigate correctly for tags with whitespace', async ({ page }) => {
+    const whitespaceTags = page.locator('a[href^="/tags/"][href*="%20"]');
+    // This behavior is validated when test content includes at least one whitespace tag.
+    test.skip(await whitespaceTags.count() === 0, 'No tags with whitespace available in test content');
+    const whitespaceTagLink = whitespaceTags.first();
+
+    await expect(whitespaceTagLink).toBeVisible();
+    const href = await whitespaceTagLink.getAttribute('href');
+    expect(href).toBeTruthy();
+    expect(href).toContain('%20');
+
+    const tagName = extractTagName(await whitespaceTagLink.textContent());
+    expect(tagName.length).toBeGreaterThan(0);
+
+    await page.goto(href!);
+    await page.waitForLoadState('networkidle');
+
+    expect(page.url()).toContain(href!);
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(tagName);
+  });
+
   test('should display tag names clearly', async ({ page }) => {
     const tags = page.locator('a[href^="/tags/"]');
     const firstTag = tags.first();
     
     const tagText = await firstTag.textContent();
-    const tagName = tagText?.replace(/\(\d+\)/, '').trim();
+    const tagName = extractTagName(tagText);
     
     expect(tagName?.length).toBeGreaterThan(0);
   });

@@ -58,7 +58,7 @@ export default function Home() {
                   {post.tags.slice(0, 3).map((tag) => (
                     <Link
                       key={tag}
-                      href={`/tags/${tag}`}
+                      href={`/tags/${encodeURIComponent(tag)}`}
                       className="text-xs px-2 py-1 rounded-full bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 hover:bg-primary-200 dark:hover:bg-primary-800 transition-colors"
                     >
                       {tag}
