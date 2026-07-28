@@ -1,6 +1,6 @@
 ---
 title: "How to fix issues after accidentally cleaning up stuff in your windowsfilter"
-date: "2026-05-15"
+date: "2026-07-28"
 categories: 
   - "sitecore"
 tags: 
