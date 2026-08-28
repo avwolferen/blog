@@ -23,6 +23,7 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 - `pnpm start` - Start production server
 - `pnpm lint` - Run ESLint
 - `pnpm type-check` - Run TypeScript type checking
+- `pnpm check-images` - Check blog posts for broken local image references and disallowed external image URLs
 - `pnpm test` - Run Playwright tests
 - `pnpm test:ui` - Run Playwright tests with UI mode
 - `pnpm test:headed` / `pnpm test:debug` - Run tests headed / with the debugger
@@ -52,8 +53,9 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 ### Verification pipeline (run in this order before considering a change done)
 1. `pnpm build`
 2. `pnpm lint`
-3. Refresh Playwright browsers: `pnpm exec playwright uninstall --all && pnpm exec playwright install` (removes old/unreferenced browsers first, even if shared with other repositories, then reinstalls the required ones)
-4. `pnpm test`
+3. `pnpm check-images` (fails if any blog post has a broken local image reference or an external image URL)
+4. Refresh Playwright browsers: `pnpm exec playwright uninstall --all && pnpm exec playwright install` (removes old/unreferenced browsers first, even if shared with other repositories, then reinstalls the required ones)
+5. `pnpm test`
 
 ### Keep pnpm itself updated
 - When a newer pnpm version is available, suggest updating it (e.g. `corepack use pnpm@latest` or `pnpm self-update`) and keep the `packageManager` and `engines.pnpm` fields in `package.json` in sync.

@@ -43,7 +43,7 @@ mkdir "C:\ProgramData\Docker\image\windowsfilter\imagedb\content\sha256"
 
 After this I was happily building my images again.
 
-![Docker build success](https://github.com/user-attachments/assets/96fb1d77-f6be-48e1-ae9b-822bc4b95b12)
+![Docker build success](docker-build-success.png)
 
 ## Happy coding!
 

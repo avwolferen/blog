@@ -13,8 +13,6 @@ coverImage: "Why-you-should-definately-migrate-to-92.png"
 img: "Why-you-should-definately-migrate-to-92.png"
 ---
 
-![Family Guy Stewie GIF - FamilyGuy Stewie Brian GIFs](https://media1.tenor.com/images/4d9e32b0cef2a62ecb9f80eff279f7f2/tenor.gif?itemid=5400488)
-
 Azure Redis Cache and the RedisSessionStateProvider, and especially the SessionExpirationThreadCount setting. It all has to do with a better thread management for SessionExpiration that is configurable starting from 9.2 off the shelf.
 
 This issue is introduced by Microsoft in the .NET 4.7.2 framework. Unfortunately you cannot fix this issue when you are running Sitecore on Azure. Please also read [https://kb.sitecore.net/articles/327701](https://kb.sitecore.net/articles/327701) for more in depth information about this.
