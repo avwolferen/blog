@@ -57,6 +57,7 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 
 ### Keep pnpm itself updated
 - When a newer pnpm version is available, suggest updating it (e.g. `corepack use pnpm@latest` or `pnpm self-update`) and keep the `packageManager` and `engines.pnpm` fields in `package.json` in sync.
+- Also keep the Node.js and pnpm versions used by CI workflows (`.github/workflows/*.yml`) aligned with `engines.node` / `packageManager` in `package.json` — a mismatch (e.g. an older Node/pnpm pinned in a workflow) can cause `pnpm install --frozen-lockfile` to behave differently or fail in CI.
 
 ### Vulnerable packages → check Dependabot
 - If a vulnerable package is found (e.g. via `pnpm audit` or safe-chain), first run `gh auth status` to confirm CLI auth.
