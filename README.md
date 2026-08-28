@@ -100,6 +100,12 @@ pnpm type-check
 pnpm lint
 ```
 
+### Image Validation
+```bash
+pnpm check-images
+```
+Checks every blog post for broken local image references and disallowed external image URLs.
+
 ## 🔐 Security Headers
 
 The application sets strict response headers in `next.config.js` for all routes:

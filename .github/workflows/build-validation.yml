@@ -64,6 +64,9 @@ jobs:
     - name: Type check
       run: pnpm run type-check
 
+    - name: Check for broken or external blog images
+      run: pnpm run check-images
+
     - name: Build the project
       run: pnpm run build
 
