@@ -28,8 +28,8 @@ A modern, high-performance blog built with Next.js 16, React 19, TypeScript, and
 
 ## 📋 Prerequisites
 
-- **Node.js**: >= 22.0.0
-- **pnpm**: >= 9.0.0
+- **Node.js**: >= 24.0.0
+- **pnpm**: 11.0.0 (installed through Corepack)
 
 ## 🛠️ Installation
 
@@ -39,7 +39,18 @@ git clone https://github.com/avwolferen/blog.git
 cd blog
 ```
 
-2. Install dependencies:
+2. Enable Corepack, which manages the pnpm version used by this project:
+```bash
+corepack enable
+corepack install
+```
+
+3. Verify that pnpm is available:
+```bash
+pnpm --version
+```
+
+4. Install dependencies:
 ```bash
 pnpm install
 ```

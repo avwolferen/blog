@@ -1,7 +1,7 @@
 ---
 title: "8 mistakes you really do not want to find on Google about your Sitecore website"
 date: "2020-12-21"
-img: ./8-mistakes.png # Add image post (optional)
+img: ./8-mistakes.png
 categories: 
   - "awareness"
   - "sitecore"
