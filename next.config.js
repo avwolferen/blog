@@ -25,8 +25,8 @@ const nextConfig = {
       // Keep 'unsafe-inline': Next.js App Router currently emits inline runtime scripts.
       // Removing it causes CSP violations and hydration/runtime failures (see README CSP notes).
       "script-src 'self' 'unsafe-inline' https://www.googletagmanager.com",
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      "font-src 'self' https://fonts.gstatic.com",
+      "style-src 'self' 'unsafe-inline'",
+      "font-src 'self'",
       "img-src 'self' data: blob: https://www.google-analytics.com",
       "connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://www.googletagmanager.com",
     ].join('; ');
