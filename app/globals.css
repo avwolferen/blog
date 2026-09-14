@@ -9,6 +9,7 @@
   
   body {
     @apply antialiased;
+    font-family: Arial, Helvetica, sans-serif;
   }
 
   html.christmas body {
