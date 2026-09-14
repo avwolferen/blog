@@ -4,7 +4,7 @@ This directory contains the configuration for GitHub Codespaces and VS Code Dev 
 
 ## Features
 
-- **Base Image**: Node.js 22 with TypeScript support
+- **Base Image**: Node.js 24 with TypeScript support
 - **Pre-installed Tools**:
   - GitHub CLI (`gh`)
   - Docker-in-Docker support
@@ -24,7 +24,7 @@ The following extensions are automatically installed:
 ## Automatic Setup
 
 When the codespace is created, it will automatically:
-1. Install all npm dependencies
+1. Install all pnpm dependencies
 2. Install Playwright browsers and dependencies
 3. Forward port 3000 for the Next.js dev server
 

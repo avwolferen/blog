@@ -27,35 +27,35 @@ tests/
 
 ### Run all tests
 ```bash
-npm test
+pnpm test
 ```
 
 ### Run tests in UI mode (recommended for development)
 ```bash
-npm run test:ui
+pnpm test:ui
 ```
 
 ### Run tests in headed mode (see browser)
 ```bash
-npm run test:headed
+pnpm test:headed
 ```
 
 ### Debug tests
 ```bash
-npm run test:debug
+pnpm test:debug
 ```
 
 ### Run specific browser tests
 ```bash
-npm run test:chromium    # Chrome/Chromium only
-npm run test:firefox     # Firefox only
-npm run test:webkit      # Safari/WebKit only
-npm run test:mobile      # Mobile devices only
+pnpm test:chromium    # Chrome/Chromium only
+pnpm test:firefox     # Firefox only
+pnpm test:webkit      # Safari/WebKit only
+pnpm test:mobile      # Mobile devices only
 ```
 
 ### View test report
 ```bash
-npm run test:report
+pnpm test:report
 ```
 
 ## Test Priorities
@@ -163,9 +163,9 @@ Tests are configured to run in CI with:
 - Check for race conditions
 
 ### Browser issues
-- Update Playwright: `npx playwright install`
-- Clear cache: `npx playwright cache clear`
-- Check browser versions: `npx playwright --version`
+- Update Playwright: `pnpm exec playwright install`
+- Clear cache: `pnpm exec playwright cache clear`
+- Check browser versions: `pnpm exec playwright --version`
 
 ## Resources
 

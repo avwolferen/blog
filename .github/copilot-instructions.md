@@ -11,8 +11,8 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 - **UI Library**: React 19
 - **Styling**: Tailwind CSS 3.4 with @tailwindcss/typography
 - **Content**: Markdown with gray-matter for frontmatter parsing
-- **Testing**: Playwright 1.62 for end-to-end tests
-- **Package manager**: pnpm 11
+- **Testing**: Playwright 1.63 for end-to-end tests
+- **Package manager**: pnpm 12.4.1
 - **Deployment**: Azure Static Web Apps (Node.js 24+)
 
 ## Build & Test Commands
@@ -68,6 +68,10 @@ This is a modern blog application built with Next.js, TypeScript, and Markdown-b
 
 ### Keep README in sync
 - Whenever dependency versions, scripts, or the tech stack change (after `pnpm update`, a pnpm self-update, or Next.js/React/Node version bumps), also check `README.md` at the repo root and update its stated tech stack, version numbers, or command references so it stays accurate to the actual implementation.
+
+### Keep documentation in sync
+- When the tech stack, package scripts, testing configuration, development environment, or CI workflow changes, review and update all affected documentation, including `README.md`, testing guides, `TEST_SUMMARY.md`, and `.devcontainer/README.md`.
+- Use the commands and versions defined by `package.json`, `playwright.config.ts`, `.devcontainer/devcontainer.json`, and `.github/workflows/` as the source of truth; do not leave stale npm commands or version references in documentation.
 
 ## Code Style
 

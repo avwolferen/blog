@@ -98,25 +98,25 @@ test.beforeEach(async ({ page }) => {
 
 ### 1. Enable Trace
 ```bash
-npx playwright test --trace on
+pnpm exec playwright test --trace on
 ```
 
 ### 2. Enable Video
 ```bash
-npx playwright test --video on
+pnpm exec playwright test --video on
 ```
 
 ### 3. Run in Headed Mode
 ```bash
-npx playwright test --headed --workers=1
+pnpm exec playwright test --headed --workers=1
 ```
 
 ### 4. Run Single Test Multiple Times
 ```bash
-npx playwright test --repeat-each=10 tests/e2e/homepage.spec.ts
+pnpm exec playwright test --repeat-each=10 tests/e2e/homepage.spec.ts
 ```
 
 ### 5. Use UI Mode
 ```bash
-npm run test:ui
+pnpm test:ui
 ```

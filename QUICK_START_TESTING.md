@@ -1,27 +1,27 @@
 # Quick Start - Running E2E Tests
 
 ## Prerequisites
-✅ Node.js 22+ installed
-✅ Dependencies installed (`npm install`)
+✅ Node.js 24+ installed
+✅ Dependencies installed (`pnpm install`)
 ✅ Playwright browsers installed
 
 ## Installation (One-Time Setup)
 
 ```powershell
 # Install Playwright browsers (if not already done)
-npx playwright install
+pnpm exec playwright install
 ```
 
 ## Running Tests
 
 ### 1. Run All Tests (Headless)
 ```powershell
-npm test
+pnpm test
 ```
 
 ### 2. Run Tests with UI (Recommended)
 ```powershell
-npm run test:ui
+pnpm test:ui
 ```
 This opens an interactive UI where you can:
 - See all tests
@@ -31,39 +31,39 @@ This opens an interactive UI where you can:
 
 ### 3. Run Tests with Browser Visible
 ```powershell
-npm run test:headed
+pnpm test:headed
 ```
 
 ### 4. Debug Specific Test
 ```powershell
-npm run test:debug
+pnpm test:debug
 ```
 
 ### 5. Run Specific Browser
 ```powershell
-npm run test:chromium    # Chrome only
-npm run test:firefox     # Firefox only
-npm run test:webkit      # Safari only
+pnpm test:chromium    # Chrome only
+pnpm test:firefox     # Firefox only
+pnpm test:webkit      # Safari only
 ```
 
 ### 6. Run Mobile Tests Only
 ```powershell
-npm run test:mobile
+pnpm test:mobile
 ```
 
 ### 7. Run Specific Test File
 ```powershell
-npx playwright test tests/e2e/homepage.spec.ts
+pnpm exec playwright test tests/e2e/homepage.spec.ts
 ```
 
 ### 8. Run Specific Test by Name
 ```powershell
-npx playwright test -g "should display main heading"
+pnpm exec playwright test -g "should display main heading"
 ```
 
 ### 9. View Test Report
 ```powershell
-npm run test:report
+pnpm test:report
 ```
 
 ## Test Results
@@ -78,10 +78,10 @@ After running tests, you'll see:
 ### Dev server not starting
 ```powershell
 # Start manually in a separate terminal
-npm run dev
+pnpm dev
 
 # Then run tests without auto-start
-npx playwright test --config=playwright.config.ts
+pnpm exec playwright test --config=playwright.config.ts
 ```
 
 ### Port already in use
@@ -95,13 +95,13 @@ npx kill-port 3000
 ### Tests failing randomly
 ```powershell
 # Run with retries
-npx playwright test --retries=2
+pnpm exec playwright test --retries=3
 ```
 
 ### Slow tests
 ```powershell
 # Run in parallel (multiple workers)
-npx playwright test --workers=4
+pnpm exec playwright test --workers=4
 ```
 
 ## Test Organization
@@ -129,15 +129,15 @@ tests/
 
 | Command | Description |
 |---------|-------------|
-| `npm test` | Run all tests |
-| `npm run test:ui` | Interactive UI mode |
-| `npm run test:headed` | Show browser |
-| `npm run test:debug` | Debug mode |
-| `npm run test:chromium` | Chrome only |
-| `npm run test:firefox` | Firefox only |
-| `npm run test:webkit` | Safari only |
-| `npm run test:mobile` | Mobile devices |
-| `npm run test:report` | View HTML report |
+| `pnpm test` | Run all tests |
+| `pnpm test:ui` | Interactive UI mode |
+| `pnpm test:headed` | Show browser |
+| `pnpm test:debug` | Debug mode |
+| `pnpm test:chromium` | Chrome only |
+| `pnpm test:firefox` | Firefox only |
+| `pnpm test:webkit` | Safari only |
+| `pnpm test:mobile` | Mobile devices |
+| `pnpm test:report` | View HTML report |
 
 ## Example Output
 
@@ -154,9 +154,9 @@ Running 198 tests using 4 workers
 
 ## Next Steps
 
-1. ✅ Run `npm test` to verify setup
-2. ✅ Check `npm run test:report` for detailed results
-3. ✅ Use `npm run test:ui` for development
+1. ✅ Run `pnpm test` to verify setup
+2. ✅ Check `pnpm test:report` for detailed results
+3. ✅ Use `pnpm test:ui` for development
 4. ✅ Add tests to CI/CD pipeline
 
 ## Need Help?
@@ -168,4 +168,4 @@ Running 198 tests using 4 workers
 
 ---
 
-**Ready to test?** Run `npm run test:ui` to get started! 🚀
+**Ready to test?** Run `pnpm test:ui` to get started! 🚀
