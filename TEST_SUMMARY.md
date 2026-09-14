@@ -277,7 +277,7 @@ Tests 404 error handling:
   - Troubleshooting tips
 
 ### Package.json Scripts
-Added the following npm scripts:
+The following pnpm scripts are available:
 - `pnpm test` - Run all tests
 - `pnpm test:ui` - Run tests in UI mode
 - `pnpm test:headed` - Run tests with browser visible

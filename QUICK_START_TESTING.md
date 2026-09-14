@@ -86,8 +86,8 @@ pnpm exec playwright test --config=playwright.config.ts
 
 ### Port already in use
 ```powershell
-# Kill process on port 3000
-npx kill-port 3000
+# Kill the process using port 3000 (Linux/macOS)
+fuser -k 3000/tcp
 
 # Or change port in playwright.config.ts
 ```

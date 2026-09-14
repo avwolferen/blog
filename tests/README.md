@@ -100,7 +100,7 @@ Test configuration is in `playwright.config.ts`:
 - **Mobile Devices**: iPhone 12, Pixel 5, iPad
 - **Base URL**: http://localhost:3000
 - **Timeout**: 30 seconds per test
-- **Retries**: 2 on CI, 0 locally
+- **Retries**: 3 on CI, 1 locally
 - **Screenshots**: On failure only
 - **Traces**: On first retry
 
@@ -146,7 +146,7 @@ test.describe('My Feature', () => {
 
 Tests are configured to run in CI with:
 - Parallel execution disabled
-- 2 retries per test
+- 3 retries per test
 - HTML report generation
 - Screenshot capture on failure
 
