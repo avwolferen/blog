@@ -4,15 +4,15 @@
 
 A modern, high-performance blog built with Next.js 16, React 19, TypeScript, and Tailwind CSS. This blog focuses on Sitecore architecture, development tips, Azure, and web technologies.
 
-[![Node.js Version](https://img.shields.io/badge/node-%3E%3D22.0.0-brightgreen)](https://nodejs.org/)
-[![Next.js](https://img.shields.io/badge/Next.js-16.2.12-black)](https://nextjs.org/)
-[![React](https://img.shields.io/badge/React-19.0-blue)](https://react.dev/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue)](https://www.typescriptlang.org/)
+[![Node.js Version](https://img.shields.io/badge/node-%3E%3D24.0.0-brightgreen)](https://nodejs.org/)
+[![Next.js](https://img.shields.io/badge/Next.js-16.3.5-black)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19.3-blue)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-6.0-blue)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ## 🚀 Features
 
-- **Modern Tech Stack**: Built with Next.js 16 (App Router), React 19, and TypeScript 5.7
+- **Modern Tech Stack**: Built with Next.js 16 (App Router), React 19, and TypeScript 6.0
 - **Markdown-Based Content**: Write blog posts in Markdown with frontmatter metadata
 - **Theme Support**: Light, dark, and christmas theme switching with system preference detection
 - **Optimized Images**: Next.js Image optimization with AVIF and WebP support
@@ -29,7 +29,7 @@ A modern, high-performance blog built with Next.js 16, React 19, TypeScript, and
 ## 📋 Prerequisites
 
 - **Node.js**: >= 24.0.0
-- **pnpm**: 11.0.0 (installed through Corepack)
+- **pnpm**: 12.4.1 (installed through Corepack)
 
 ## 🛠️ Installation
 
@@ -70,7 +70,7 @@ This repository is configured for GitHub Codespaces, providing a complete develo
 
 ### What's Included
 
-- **Node.js 22** with TypeScript support
+- **Node.js 24** with TypeScript support
 - **Pre-installed VS Code extensions** for Next.js, React, Tailwind CSS, and Playwright
 - **Playwright browsers** automatically installed and configured
 - **Port forwarding** for the Next.js dev server (port 3000)
@@ -284,7 +284,7 @@ For now, `'unsafe-inline'` is retained for compatibility with Next.js App Router
 ### Core Framework
 - [Next.js 16](https://nextjs.org/) - React framework with App Router
 - [React 19](https://react.dev/) - UI library
-- [TypeScript 5.7](https://www.typescriptlang.org/) - Type safety
+- [TypeScript 6.0](https://www.typescriptlang.org/) - Type safety
 
 ### Styling & UI
 - [Tailwind CSS 3.4](https://tailwindcss.com/) - Utility-first CSS framework

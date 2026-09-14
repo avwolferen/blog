@@ -277,16 +277,16 @@ Tests 404 error handling:
   - Troubleshooting tips
 
 ### Package.json Scripts
-Added the following npm scripts:
-- `npm test` - Run all tests
-- `npm run test:ui` - Run tests in UI mode
-- `npm run test:headed` - Run tests with browser visible
-- `npm run test:debug` - Debug tests
-- `npm run test:chromium` - Run Chromium tests only
-- `npm run test:firefox` - Run Firefox tests only
-- `npm run test:webkit` - Run WebKit tests only
-- `npm run test:mobile` - Run mobile device tests only
-- `npm run test:report` - View test report
+The following pnpm scripts are available:
+- `pnpm test` - Run all tests
+- `pnpm test:ui` - Run tests in UI mode
+- `pnpm test:headed` - Run tests with browser visible
+- `pnpm test:debug` - Debug tests
+- `pnpm test:chromium` - Run Chromium tests only
+- `pnpm test:firefox` - Run Firefox tests only
+- `pnpm test:webkit` - Run WebKit tests only
+- `pnpm test:mobile` - Run mobile device tests only
+- `pnpm test:report` - View test report
 
 ## Test Coverage Summary
 
@@ -311,33 +311,33 @@ Added the following npm scripts:
 ### First Time Setup
 ```bash
 # Install dependencies (already done)
-npm install
+pnpm install
 
 # Install Playwright browsers
-npx playwright install
+pnpm exec playwright install
 ```
 
 ### Run Tests
 ```bash
 # All tests
-npm test
+pnpm test
 
 # UI Mode (recommended for development)
-npm run test:ui
+pnpm test:ui
 
 # Specific browser
-npm run test:chromium
+pnpm test:chromium
 
 # Mobile only
-npm run test:mobile
+pnpm test:mobile
 
 # View report
-npm run test:report
+pnpm test:report
 ```
 
 ## Next Steps
 
-1. **Run tests**: `npm test` to verify all tests pass
+1. **Run tests**: `pnpm test` to verify all tests pass
 2. **Review failures**: Check any failing tests and fix issues
 3. **CI Integration**: Add Playwright tests to Azure Pipeline
 4. **Coverage**: Run tests regularly during development
@@ -357,5 +357,5 @@ npm run test:report
 
 **Author**: GitHub Copilot
 **Created**: January 19, 2026
-**Framework**: Playwright v1.57.0
+**Framework**: Playwright v1.63.0
 **Language**: TypeScript

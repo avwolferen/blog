@@ -28,16 +28,16 @@
 
 ```bash
 # Maximum stability (sequential + 3 retries)
-npm run test:stable
+pnpm test:stable
 
 # Find flaky tests (run each 5 times)
-npm run test:repeat
+pnpm test:repeat
 
 # All other commands still work
-npm test              # Standard run
-npm run test:ui       # Visual mode
-npm run test:headed   # Show browser
-npm run test:debug    # Debug mode
+pnpm test              # Standard run
+pnpm test:ui       # Visual mode
+pnpm test:headed   # Show browser
+pnpm test:debug    # Debug mode
 ```
 
 ## 🎯 Key Features
@@ -54,10 +54,10 @@ npm run test:debug    # Debug mode
 ## 💡 Quick Tips
 
 ### If a test is flaky:
-1. Run with `npm run test:repeat` to confirm
+1. Run with `pnpm test:repeat` to confirm
 2. Check video in `test-results/`
-3. View trace: `npx playwright show-trace [trace.zip]`
-4. Use UI mode: `npm run test:ui`
+3. View trace: `pnpm exec playwright show-trace [trace.zip]`
+4. Use UI mode: `pnpm test:ui`
 
 ### For CI failures:
 - Tests retry 3 times automatically

@@ -41,7 +41,7 @@ Multiple reporters for better debugging:
 
 ### Test with Maximum Stability
 ```bash
-npm run test:stable
+pnpm test:stable
 ```
 Runs tests with:
 - Single worker (sequential)
@@ -50,7 +50,7 @@ Runs tests with:
 
 ### Repeat Tests to Find Flakiness
 ```bash
-npm run test:repeat
+pnpm test:repeat
 ```
 Runs each test 5 times to detect intermittent failures
 
@@ -74,12 +74,12 @@ Runs each test 5 times to detect intermittent failures
 
 ### 1. View Test Traces
 ```bash
-npx playwright show-trace test-results/traces/trace.zip
+pnpm exec playwright show-trace test-results/traces/trace.zip
 ```
 
 ### 2. Run in UI Mode
 ```bash
-npm run test:ui
+pnpm test:ui
 ```
 - Watch tests execute in real-time
 - Step through each action
@@ -87,7 +87,7 @@ npm run test:ui
 
 ### 3. Run Single Test with Retries
 ```bash
-npx playwright test tests/e2e/homepage.spec.ts --retries=10
+pnpm exec playwright test tests/e2e/homepage.spec.ts --retries=10
 ```
 
 ### 4. Check Video Recording
@@ -100,7 +100,7 @@ test-results/
 
 ### 5. Enable Debug Logging
 ```bash
-DEBUG=pw:api npm test
+DEBUG=pw:api pnpm test
 ```
 
 ## 📊 Comparison: Before vs After
@@ -161,18 +161,18 @@ await element.hover(); // Fails on mobile
 
 ### For Local Development
 ```bash
-npm test              # Fast, parallel
-npm run test:ui       # Visual, interactive
+pnpm test              # Fast, parallel
+pnpm test:ui       # Visual, interactive
 ```
 
 ### For CI/CD
 ```bash
-npm run test:stable   # Maximum stability
+pnpm test:stable   # Maximum stability
 ```
 
 ### To Find Flaky Tests
 ```bash
-npm run test:repeat   # Run each test 5 times
+pnpm test:repeat   # Run each test 5 times
 ```
 
 ## 📈 Expected Results
@@ -209,10 +209,10 @@ use: {
 ### Environment Variables
 ```bash
 # Set max workers
-PLAYWRIGHT_WORKERS=1 npm test
+PLAYWRIGHT_WORKERS=1 pnpm test
 
 # Set retries
-PLAYWRIGHT_RETRIES=5 npm test
+PLAYWRIGHT_RETRIES=5 pnpm test
 ```
 
 ## 📚 Resources
