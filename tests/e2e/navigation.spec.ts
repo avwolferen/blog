@@ -139,7 +139,7 @@ test.describe('Navigation', () => {
 
     const response = await page.goto('/');
     const serverRenderedHtml = await response?.text();
-    expect(serverRenderedHtml).not.toContain('This device has approximately 8 GiB of RAM.');
+    expect(serverRenderedHtml).not.toContain('This device has approximately');
 
     await expect(
       page.getByText('This device has approximately 8 GiB of RAM.', { exact: true })
