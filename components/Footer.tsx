@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import DeviceMemoryNote from './DeviceMemoryNote';
 
 const siteMetadata = {
   author: 'Alex van Wolferen',
@@ -112,6 +113,7 @@ export default function Footer() {
           <p className="text-gray-600 dark:text-gray-400 text-sm">
             © {new Date().getFullYear()} {siteMetadata.author}. All rights reserved.
           </p>
+          <DeviceMemoryNote />
         </div>
       </div>
     </footer>

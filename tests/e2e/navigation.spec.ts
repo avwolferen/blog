@@ -129,6 +129,38 @@ test.describe('Navigation', () => {
     await expect(footer).toBeVisible();
   });
 
+  test('should show approximate device memory when the API is available', async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, 'deviceMemory', {
+        configurable: true,
+        value: 8,
+      });
+    });
+
+    const response = await page.goto('/');
+    const serverRenderedHtml = await response?.text();
+    expect(serverRenderedHtml).not.toContain('This device has approximately');
+
+    await expect(
+      page.getByText('This device has approximately 8 GiB of RAM.', { exact: true })
+    ).toBeVisible();
+  });
+
+  test('should not show a device memory note when the API is unavailable', async ({ page }) => {
+    await page.addInitScript(() => {
+      Object.defineProperty(navigator, 'deviceMemory', {
+        configurable: true,
+        value: undefined,
+      });
+    });
+
+    await page.goto('/');
+
+    await expect(
+      page.getByText(/This device has approximately .* GiB of RAM\./)
+    ).toHaveCount(0);
+  });
+
   test('should have working footer links', async ({ page }) => {
     await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
     await page.waitForTimeout(300);
